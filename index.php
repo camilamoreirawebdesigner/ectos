@@ -250,6 +250,17 @@ $listaServices = getServices();
                     <hr class="line">
                     <h6 class="fw-400">Informe os seus dados no formulário abaixo!</h6>
 
+                    <!-- MENSAGENS DE ALERTA -->
+                    <div class="alert alert-success alert-dismissible fade show oculta" role="alert">
+                        <strong>Oba!</strong> Seu e-mail foi enviado com sucesso, entraremos em contato em breve.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show oculta" role="alert">
+                        <strong>Ops!</strong> Não conseguimos receber o seu email, tente novamente mais tarde.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
                     <!-- Formulário de contato -->
                     <form class="mt-5 mb-5" action="./assets/email.php" method="POST">
                         <div class="row">
@@ -296,6 +307,7 @@ $listaServices = getServices();
                             </div>
                         </div>
                     </form>
+                    
                 </div>
                 <div id="contato-redes" class="col-xs-12 col-sm-12 col-md-6">
                     <table>
