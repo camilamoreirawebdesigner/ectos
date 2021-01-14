@@ -247,6 +247,10 @@ div.arquivo button {
     #rodape div {
         text-align: center !important;
     }
+    div.arquivo ul {
+        list-style: none;
+        display: inline;
+    }
 }
 
 @media screen and (max-width: 768px) and (min-width: 576px) { /* grid sm*/
@@ -256,8 +260,19 @@ div.arquivo button {
     #rodape div {
         text-align: center !important;
     }
+    div.arquivo ul {
+        list-style: none;
+        display: flex;
+        margin-top: 20px;
+    }
 }
 
 @media screen and (max-width: 992px) and (min-width: 768px) { /* grid md*/
 
+}
+
+/* BOOTSTRAP AJUSTE */
+.modal-backdrop {
+    width: 100% !important;
+    height: 100% !important;
 }
