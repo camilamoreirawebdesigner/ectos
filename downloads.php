@@ -116,7 +116,7 @@
                             </h6>
                             <div class="row mt-5">
                                 <div class="col-3">
-                                    <button type="button" class="btn btn-default">DETALHES</button>
+                                    <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-free">DETALHES</button>
                                 </div>
                                 <div class="col-9">
                                     <ul>
@@ -136,7 +136,7 @@
                             </h6>
                             <div class="row mt-5">
                                 <div class="col-3">
-                                    <button type="button" class="btn btn-default">DETALHES</button>
+                                    <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-free">DETALHES</button>
                                 </div>
                                 <div class="col-9">
                                     <ul>
@@ -156,7 +156,7 @@
                             </h6>
                             <div class="row mt-5">
                                 <div class="col-3">
-                                    <button type="button" class="btn btn-default">DETALHES</button>
+                                    <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-pago">DETALHES</button>
                                 </div>
                                 <div class="col-9">
                                     <ul>
@@ -172,29 +172,154 @@
                 </div>
             </div>
 
-            <!-- MODAL  -->
-            <div class="modal" tabindex="-1">
-                <div class="modal-dialog">
+            <!-- MODAL FREE  -->
+            <div class="modal" tabindex="-1" id="modal-arquivo-free">
+                <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Título do Arquivo</h5>
+                            <h5 class="modal-title">Detalhes do arquivo</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <div class="row">
-                                <div class="col-8"></div>
-                                <div class="col-4">
-                                    <img src="assets/img/arquivo.png" alt="">
+                            <div class="container">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <h4 class="fw-500">Planilha de cálculo de salário</h4>
+                                        <hr class="line">
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h6 class="fw-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis saepe, laudantium a soluta nam cum. Dolore at facilis inventore dolorem harum quos non vel, maiores officiis, maxime magnam quod qui?</h6>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <img src="assets/img/arquivo.png" alt="">
+                                        <p><em>O arquivo contém 10MB.</em></p>
+                                    </div>
+                                </div>
+
+                                <div id="dow-galeria" class="row mt-2">
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-default">
+                                            <i class="fas fa-download"></i> Baixar agora
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>                         
+
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- MODAL PAGO -->
+            <div class="modal" tabindex="-1" id="modal-arquivo-pago">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Detalhes do arquivo</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <h4 class="fw-500">Planilha de cálculo de salário</h4>
+                                        <hr class="line">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h6 class="fw-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis saepe, laudantium a soluta nam cum. Dolore at facilis inventore dolorem harum quos non vel, maiores officiis, maxime magnam quod qui?</h6>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <img src="assets/img/arquivo.png" alt="">
+                                        <p><em>O arquivo contém 10MB.</em></p>
+                                    </div>
+                                </div>
+
+                                <div id="dow-galeria" class="row mt-5">
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="row mt-5">
+                                    <div class="col">
+                                        <h5 class="fw-500">Preencha suas dados para receber informações de orçamento:</h5>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <form class="mt-3 mb-3" action="" method="POST">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label for="nome" class="form-label">Nome completo <span class="required">*</span></label>
+                                                        <input type="text" class="form-control" name="nome" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3">
+                                                        <label for="whats" class="form-label">WhatsApp <span class="required">*</span></label>
+                                                        <input type="text" class="form-control" name="whats" placeholder="(DDD) 0000-0000" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <div class="mb-3">
+                                                        <label for="email" class="form-label">Email <span class="required">*</span></label>
+                                                        <input type="email" class="form-control" name="email" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="mb-3">
+                                                        <label for="qtd" class="form-label">Qtd.</label>
+                                                        <input type="text" class="form-control" name="qtd" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-default">
+                                            <i class="fas fa-search-dollar"></i> Solicitar Orçamento
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>                         
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
     </div>
