@@ -108,6 +108,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
+
                         <div class="arquivo mb-3">
                             <div class="banner-free">free</div>
                             <h4 class="fw-500">Planilha de cálculo de salário</h4>
@@ -121,6 +122,46 @@
                                 <div class="col-9">
                                     <ul>
                                         <li><i class="fas fa-download fa-2x color-three"></i><br>Download Gratuito</li>
+                                        <li><i class="fas fa-file-excel fa-2x color-three"></i><br>Arquivo.xlsx</li>
+                                        <li><i class="fab fa-windows fa-2x color-three"></i><br>Disponível para Windows</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="arquivo mb-3">
+                            <div class="banner-free">free</div>
+                            <h4 class="fw-500">Planilha de cálculo de salário</h4>
+                            <h6 class="fw-400 col-10">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi nulla veritatis, dolore voluptas sed commodi neque nobis natus fugit fugiat? Esse recusandae, cupiditate doloremque non magnam voluptatibus ipsa porro itaque!
+                            </h6>
+                            <div class="row mt-5">
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-free">DETALHES</button>
+                                </div>
+                                <div class="col-9">
+                                    <ul>
+                                        <li><i class="fas fa-download fa-2x color-three"></i><br>Download Gratuito</li>
+                                        <li><i class="fas fa-file-excel fa-2x color-three"></i><br>Arquivo.xlsx</li>
+                                        <li><i class="fab fa-windows fa-2x color-three"></i><br>Disponível para Windows</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="arquivo mb-3">
+                            <div class="banner-pago">pago</div>
+                            <h4 class="fw-500">Planilha de cálculo de salário</h4>
+                            <h6 class="fw-400 col-10">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi nulla veritatis, dolore voluptas sed commodi neque nobis natus fugit fugiat? Esse recusandae, cupiditate doloremque non magnam voluptatibus ipsa porro itaque!
+                            </h6>
+                            <div class="row mt-5">
+                                <div class="col-3">
+                                    <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-pago">DETALHES</button>
+                                </div>
+                                <div class="col-9">
+                                    <ul>
+                                        <li><i class="fab fa-wpforms fa-2x color-three"></i><br>Solicitar Orçamento</li>
                                         <li><i class="fas fa-file-excel fa-2x color-three"></i><br>Arquivo.xlsx</li>
                                         <li><i class="fab fa-windows fa-2x color-three"></i><br>Disponível para Windows</li>
                                     </ul>

@@ -217,9 +217,9 @@ div.arquivo button {
     padding: 20px 50px;
     border-top: 1px solid #01B6AD;
     color: #FFF;
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 100%; */
 }
 
 #rodape a {
