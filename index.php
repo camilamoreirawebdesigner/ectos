@@ -97,7 +97,7 @@ $listaServices = getServices();
                         <a class="nav-link" href="#">CURSOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">DOWNLOADS</a>
+                        <a class="nav-link" href="downloads.php">DOWNLOADS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contato">CONTATO</a>
