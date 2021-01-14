@@ -249,7 +249,8 @@ div.arquivo button {
     }
     div.arquivo ul {
         list-style: none;
-        display: inline;
+        display: inline !important;
+        margin-top: 20px;
     }
 }
 
