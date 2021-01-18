@@ -1,14 +1,20 @@
 <?php
 //PEGANDO TIPO DE EMAIL 
-$tipoEmail = filter_input(INPUT_POST,'tipoEmail');
+$tipoEmail = filter_input(INPUT_POST, 'tipoEmail');
+$mensagem; 
+switch ($tipoEmail) {
 
+    case 1:
+        //PEGANDO DADOS 
+        $nome = filter_input(INPUT_POST, 'nome');
+        $whatsaap = filter_input(INPUT_POST, 'whats');
+        $email = filter_input(INPUT_POST, 'email');
+        $assunto = filter_input(INPUT_POST, 'assunto');
+        $mensagem =  filter_input(INPUT_POST, 'mensagem');
+    break;
 
-//PEGANDO DADOS 
-$nome = filter_input(INPUT_POST,'nome');
-$whatsaap = filter_input(INPUT_POST,'whats');
-$email = filter_input(INPUT_POST,'email');
-$assunto = filter_input(INPUT_POST,'assunto');
-$mensagem =  filter_input(INPUT_POST,'mensagem');
+}
+
 
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
@@ -36,7 +42,7 @@ try {
     //Recipients
     $mail->setFrom('contato@camilamoreira.com.br', 'Camila');
     $mail->addAddress($email, $nome);     // Add a recipient
-    
+
 
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML

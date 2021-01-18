@@ -1,28 +1,8 @@
 jQuery(document).ready(function( $ ) {
-    
-    //CONTADORES
-    $('.js-count > span').counterUp({
-        delay: 10,
-        time: 1000
-    });
 
-    // // BOTÃO VOLTAR AO TOPO
-   $(".back-to-top").click(function() {
-         $('html, body').animate({scrollTop:0}, 'slow');
-    });
-    
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > 200) {
-            $('.back-to-top').fadeIn(200);
-        } else {
-            $('.back-to-top').fadeOut(200);
-        }
-    });
-
-
-    //FUNÇÃO PARA ENVIAR EMAIL 
+    //FUNÇÃO PARA ENVIAR EMAIL INDEX
     let btnEnviar = document.getElementById("btnEnviar");
-    btnEnviar.addEventListener('click', function() {
+        btnEnviar.addEventListener('click', function() {
         let email = document.getElementsByName('email')[0].value
         let nome = document.getElementsByName('nome')[0].value
         let whats = document.getElementsByName('whats')[0].value
@@ -54,10 +34,6 @@ jQuery(document).ready(function( $ ) {
         }
 
     });
-
-
-
-
 });
 
 

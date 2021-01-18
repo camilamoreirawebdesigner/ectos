@@ -1,3 +1,7 @@
+<?php 
+require 'assets/includes/functions.php'; 
+$dowloadsArchives = getDowloadsArchives();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Link do Jquery 1.10.2 -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
     <style>
         .navbar-default {
@@ -106,47 +110,30 @@
             </div>
             <div class="row">
                 <div class="col">
-
+                    <?php foreach($dowloadsArchives as $dowloadArchive): ?>
                     <div class="arquivo mb-3">
-                        <div class="banner-free">free</div>
-                        <h4 class="fw-500 col-8">Planilha de cálculo de salário</h4>
-                        <h6 class="fw-400 col-10">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi nulla veritatis, dolore voluptas sed commodi neque nobis natus fugit fugiat? Esse recusandae, cupiditate doloremque non magnam voluptatibus ipsa porro itaque!
+                        <div class="banner-free"><?=$dowloadArchive['type'] == 'P' ? 'pago' : 'free'; ?> </div>
+                        <h4 class="fw-500 col-8 title"><?=$dowloadArchive['title'];?></h4>
+                        <h6 class="fw-400 col-10 descritpion">
+                            <?=$dowloadArchive['description'];?>
                         </h6>
                         <div class="row mt-5">
                             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-free">DETALHES</button>
+                                <button type="button" class="btn btn-default btnDetalhe" data-id-curso=<?=$dowloadArchive['id'];?> >DETALHES</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                 <ul>
-                                    <li><i class="fas fa-download fa-2x color-three"></i><br>Download Gratuito</li>
-                                    <li><i class="fas fa-file-excel fa-2x color-three"></i><br>Arquivo.xlsx</li>
-                                    <li><i class="fab fa-windows fa-2x color-three"></i><br>Disponível para Windows</li>
+                                    <li><i class="fas fa-download fa-2x color-three"></i><br><?=$dowloadArchive['type'] == 'P' ? 'Solicitar orçamento' : 'Dowload gratuito'; ?></li>
+                                    <li><i class="fas fa-file-excel fa-2x color-three"></i><br><?=$dowloadArchive['titleArchive'];?></li>
+
+                                    <li><i class="fab fa-windows fa-2x color-three"></i><br><?=$dowloadArchive['disponivelPara']; ?></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
 
-                    <div class="arquivo mb-3">
-                        <div class="banner-free">free</div>
-                        <h4 class="fw-500 col-8">Planilha de cálculo de salário</h4>
-                        <h6 class="fw-400 col-10">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi nulla veritatis, dolore voluptas sed commodi neque nobis natus fugit fugiat? Esse recusandae, cupiditate doloremque non magnam voluptatibus ipsa porro itaque!
-                        </h6>
-                        <div class="row mt-5">
-                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-free">DETALHES</button>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                                <ul>
-                                    <li><i class="fas fa-download fa-2x color-three"></i><br>Download Gratuito</li>
-                                    <li><i class="fas fa-file-excel fa-2x color-three"></i><br>Arquivo.xlsx</li>
-                                    <li><i class="fab fa-windows fa-2x color-three"></i><br>Disponível para Windows</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
+                   
                     <div class="arquivo mb-3">
                         <div class="banner-pago">pago</div>
                         <h4 class="fw-500 col-8">Planilha de cálculo de salário</h4>
@@ -166,47 +153,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <div class="arquivo mb-3">
-                        <div class="banner-free">free</div>
-                        <h4 class="fw-500 col-8">Planilha de cálculo de salário</h4>
-                        <h6 class="fw-400 col-10">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi nulla veritatis, dolore voluptas sed commodi neque nobis natus fugit fugiat? Esse recusandae, cupiditate doloremque non magnam voluptatibus ipsa porro itaque!
-                        </h6>
-                        <div class="row mt-5">
-                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-free">DETALHES</button>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                                <ul>
-                                    <li><i class="fas fa-download fa-2x color-three"></i><br>Download Gratuito</li>
-                                    <li><i class="fas fa-file-excel fa-2x color-three"></i><br>Arquivo.xlsx</li>
-                                    <li><i class="fab fa-windows fa-2x color-three"></i><br>Disponível para Windows</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="arquivo mb-3">
-                        <div class="banner-pago">pago</div>
-                        <h4 class="fw-500 col-8">Planilha de cálculo de salário</h4>
-                        <h6 class="fw-400 col-10">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi nulla veritatis, dolore voluptas sed commodi neque nobis natus fugit fugiat? Esse recusandae, cupiditate doloremque non magnam voluptatibus ipsa porro itaque!
-                        </h6>
-                        <div class="row mt-5">
-                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                <button type="button" class="btn btn-default" data-bs-toggle="modal" data-bs-target="#modal-arquivo-pago">DETALHES</button>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                                <ul>
-                                    <li><i class="fab fa-wpforms fa-2x color-three"></i><br>Solicitar Orçamento</li>
-                                    <li><i class="fas fa-file-excel fa-2x color-three"></i><br>Arquivo.xlsx</li>
-                                    <li><i class="fab fa-windows fa-2x color-three"></i><br>Disponível para Windows</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -375,12 +321,48 @@
     </div>
 
     <!-- Link do Counter Up -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="assets/libraries/counter-up/jquery.counterup.min.js"></script>
 
     <!-- Link do site -->
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/contadores.js"></script>
+    <script src="assets/js/botaoTopo.js"></script>
+   
+
+    <script> 
+    //FUNÇÃO DO MODAL
+    jQuery(document).ready(function($) {
+    let btnDetalhe  = document.querySelector(".btnDetalhe");
     
+    $('#modal-arquivo-free').modal({
+        backdrop: true
+     })
+
+
+    $('.btnDetalhe').on('click', function(){
+        $('#modal-arquivo-free').show();
+
+        $.ajax({
+            type: "POST",
+            url: "./assets/detalhesCurso.php",
+            data: {
+               idCurso:e.target.getAttribute('data-id-curso')
+            },
+            success: function() {
+                console.log('success');
+            },
+            error: function(error) {
+               console.log('error');
+            },
+            dataType: "html"
+        });
+     
+    });
+    
+})
+
+    </script>
+
 </body>
 </html>
 

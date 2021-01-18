@@ -364,6 +364,8 @@ $listaServices = getServices();
     <script src="assets/libraries/counter-up/jquery.counterup.min.js"></script>
 
     <!-- Link do site -->
+    <script src="assets/js/contadores.js"></script>
+    <script src="assets/js/botaoTopo.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 
