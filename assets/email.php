@@ -1,4 +1,7 @@
 <?php
+//PEGANDO TIPO DE EMAIL 
+$tipoEmail = filter_input(INPUT_POST,'tipoEmail');
+
 
 //PEGANDO DADOS 
 $nome = filter_input(INPUT_POST,'nome');

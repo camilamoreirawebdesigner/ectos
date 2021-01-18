@@ -1,12 +1,12 @@
-
 <?php
-require 'assets/includes/functions.php'; 
+require 'assets/includes/functions.php';
 $listaBanners = getBanners();
 $listaServices = getServices();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,8 +28,9 @@ $listaServices = getServices();
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Link do Jquery 1.10.2 -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
+
 <body>
     <!-- TOP MENU -->
     <div id="top-menu">
@@ -44,30 +45,30 @@ $listaServices = getServices();
                     <span>
                         <a href="https://www.instagram.com/ectosoficial/" target="blank">
                             <i class="fab fa-instagram"></i> ectosoficial
-                        </a>                        
+                        </a>
                     </span>
                 </div>
             </div>
         </div>
     </div>
 
-     <!-- CAROUSEL -->
-     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+    <!-- CAROUSEL -->
+    <div id="carousel" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
-        <?php  foreach($listaBanners as $banner): ?>
-            <li data-bs-target="#carousel" data-bs-slide-to="<?=($banner['id'] - 1); ?>" class="<?=$banner['id'] == 1 ? 'active' : '';?>"></li>
-        <?php endforeach; ?>    
+            <?php foreach ($listaBanners as $banner) : ?>
+                <li data-bs-target="#carousel" data-bs-slide-to="<?= ($banner['id'] - 1); ?>" class="<?= $banner['id'] == 1 ? 'active' : ''; ?>"></li>
+            <?php endforeach; ?>
         </ol>
-       
+
         <div class="carousel-inner">
-           <?php  foreach($listaBanners as $banner): ?>
-            <div class="carousel-item <?=$banner['id'] == 1 ? 'active' : '';?>">
-                <img src="<?='data:image/jpg;base64,'.base64_encode($banner['image']);?>" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3><?=$banner['title'];?></h3>
-                    <p><?=$banner['description'];?></p>
+            <?php foreach ($listaBanners as $banner) : ?>
+                <div class="carousel-item <?= $banner['id'] == 1 ? 'active' : ''; ?>">
+                    <img src="<?= 'data:image/jpg;base64,' . base64_encode($banner['image']); ?>" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3><?= $banner['title']; ?></h3>
+                        <p><?= $banner['description']; ?></p>
+                    </div>
                 </div>
-            </div>
             <?php endforeach; ?>
         </div>
     </div>
@@ -105,10 +106,10 @@ $listaServices = getServices();
                 </ul>
             </div>
         </div>
-    </nav> 
+    </nav>
 
     <div data-bs-spy="scroll" data-bs-target="#nabvar-default" data-bs-offset="0" tabindex="0" style="outline: none;">
-        
+
         <!-- QUEM SOMOS -->
         <div id="quem-somos">
             <div class="container">
@@ -117,16 +118,16 @@ $listaServices = getServices();
                         <h2 class="fw-500">A EMPRESA</h2>
                         <hr class="line">
                         <h6 class="fw-400">A <strong>ectos</strong> é uma empresa de educação executiva focada no desenvolvimento de micro e pequenas empresas. <br><br>
-                        Elaboramos treinamentos específicos, acessíveis e com temas relevantes para o seu negócio, que irão tornar sua gestão mais assertiva e transformar os resultados de sua empresa.</h6>
+                            Elaboramos treinamentos específicos, acessíveis e com temas relevantes para o seu negócio, que irão tornar sua gestão mais assertiva e transformar os resultados de sua empresa.</h6>
                     </div>
                     <div class="d-none d-sm-block col-sm-6 col-md-4 col-lg-4 order-sm-1 order-md-2">
                         <a href="https://www.youtube.com/channel/UCdgFgifcu-9LL5nt4A_cVCA" target="blank">
                             <img id="quem-somos-img" src="assets/img/quem-somos-video.jpg" class="img-fluid" alt="Ectos - Educação Executiva">
-                        </a>                        
+                        </a>
                     </div>
                 </div>
             </div>
-            
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col bg-one p-5 text-white">
@@ -145,12 +146,12 @@ $listaServices = getServices();
                         <h6 class="fw-400">Fornecemos soluções que ajudam você a extrair o resultado máximo de seu negócio.</h6>
                     </div>
                 </div>
-            </div>            
+            </div>
 
             <div id="quem-somos-pilares" class="container">
                 <div class="row mt-5 mb-5">
                     <div id="box-pilares" class="col-xs-12 col-sm-12 col-md-6">
-                    <img src="assets/img/quem-somos-pilares.jpg" class="img-fluid" alt="Ectos - Nossos principais pilares.">
+                        <img src="assets/img/quem-somos-pilares.jpg" class="img-fluid" alt="Ectos - Nossos principais pilares.">
                         <span>
                             <h1>Nossos principais pilares</h1>
                             <h4>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </h4>
@@ -167,7 +168,7 @@ $listaServices = getServices();
                                     </span>
                                 </div>
                                 <div class="col">
-                                <span class="quem-somos-pilares-number">02</span>
+                                    <span class="quem-somos-pilares-number">02</span>
                                     <span class="quem-somos-pilares-text">
                                         <h5>Excelência Operacional</h5>
                                         <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quaerat dicta asperiores, ipsa earum accusantium sapiente!</h6>
@@ -176,14 +177,14 @@ $listaServices = getServices();
                             </div>
                             <div class="row" id="quem-somos-pilares-box2">
                                 <div class="col">
-                                <span class="quem-somos-pilares-number">03</span>
+                                    <span class="quem-somos-pilares-number">03</span>
                                     <span class="quem-somos-pilares-text">
                                         <h5>Excelência Operacional</h5>
                                         <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quaerat dicta asperiores, ipsa earum accusantium sapiente!</h6>
                                     </span>
                                 </div>
                                 <div class="col">
-                                <span class="quem-somos-pilares-number">04</span>
+                                    <span class="quem-somos-pilares-number">04</span>
                                     <span class="quem-somos-pilares-text">
                                         <h5>Excelência Operacional</h5>
                                         <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quaerat dicta asperiores, ipsa earum accusantium sapiente!</h6>
@@ -216,28 +217,28 @@ $listaServices = getServices();
 
         <!-- SERVIÇOS -->
         <div id="servicos" class="container-fluid">
-             
-           <?php $count = 1; ?>  
-           <?php foreach($listaServices as $service): ?>
-              
-              <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 <?= $count % 2 == 0 ? 'order-2' : 'order-1'; ?> p-0">
-                    <?php if(!empty($service['image'])):?>
-                    <img src="<?='data:image/jpg;base64,'.base64_encode($service['image']);?>" class="img-fluid" alt="">
-                    <?php endif; ?>
+
+            <?php $count = 1; ?>
+            <?php foreach ($listaServices as $service) : ?>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 <?= $count % 2 == 0 ? 'order-2' : 'order-1'; ?> p-0">
+                        <?php if (!empty($service['image'])) : ?>
+                            <img src="<?= 'data:image/jpg;base64,' . base64_encode($service['image']); ?>" class="img-fluid" alt="">
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 <?= $count % 2 == 0 ? 'order-1' : 'order-2'; ?> p-0">
+                        <div class="p-5">
+                            <h5 class="fw-500"><?= $service['title']; ?></h5>
+                            <h6 class="fw-300"><?= $service['description']; ?></h6>
+                            <a class="fw-500" href="#">SABER MAIS <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 <?= $count % 2 == 0 ? 'order-1' : 'order-2'; ?> p-0">
-                    <div class="p-5">
-                        <h5 class="fw-500"><?=$service['title']; ?></h5>
-                        <h6 class="fw-300"><?=$service['description'];?></h6>
-                        <a class="fw-500" href="#">SABER MAIS <i class="fas fa-external-link-alt"></i></a>
-                    </div>                    
-                </div>
-
-            </div>
-
-            <?php $count++; ?>
+                <?php $count++; ?>
             <?php endforeach; ?>
         </div>
 
@@ -262,18 +263,18 @@ $listaServices = getServices();
                     </div>
 
                     <!-- Formulário de contato -->
-                    <form class="mt-5 mb-5" action="./assets/email.php" method="POST">
+                    <form class="mt-5 mb-5" method="POST">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                                 <div class="mb-3">
                                     <label for="nome" class="form-label">Nome completo <span class="required">*</span></label>
-                                    <input type="text" class="form-control" name="nome" required>
+                                    <input type="text" id="nome" class="form-control" name="nome" required>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
                                 <div class="mb-3">
                                     <label for="whats" class="form-label">WhatsApp <span class="required">*</span></label>
-                                    <input type="text" class="form-control" name="whats" placeholder="(DDD) 0000-0000" required>
+                                    <input type="text" id="whats" class="form-control" name="whats" placeholder="(DDD) 0000-0000" required>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +282,7 @@ $listaServices = getServices();
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email <span class="required">*</span></label>
-                                    <input type="email" class="form-control" name="email" required>
+                                    <input type="email" id="email" class="form-control" name="email" required>
                                 </div>
                             </div>
                         </div>
@@ -289,7 +290,7 @@ $listaServices = getServices();
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="assunto" class="form-label">Assunto <span class="required">*</span></label>
-                                    <input type="text" class="form-control" name="assunto" required>
+                                    <input type="text" id="assunto" class="form-control" name="assunto" required>
                                 </div>
                             </div>
                         </div>
@@ -297,17 +298,17 @@ $listaServices = getServices();
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="mensagem" class="form-label">Mensagem <span class="required">*</span></label>
-                                    <textarea class="form-control" name="mensagem" rows="5"></textarea>
+                                    <textarea class="form-control" id="mensagem" name="mensagem" rows="5"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
-                                <button type="submit" class="btn btn-default"><i class="fas fa-paper-plane"></i> ENVIAR MENSAGEM</button>
+                                <button type="button" id="btnEnviar" class="btn btn-default"><i class="fas fa-paper-plane"></i> ENVIAR MENSAGEM</button>
                             </div>
                         </div>
                     </form>
-                    
+
                 </div>
                 <div id="contato-redes" class="col-xs-12 col-sm-12 col-md-6">
                     <table>
@@ -321,7 +322,7 @@ $listaServices = getServices();
                         <tr>
                             <td>
                                 <span class="align-middle">
-                                <strong class="color-one">Whatsapp:</strong> +55 (12) 3456-7890
+                                    <strong class="color-one">Whatsapp:</strong> +55 (12) 3456-7890
                             </td>
                         </tr>
                         <tr>
@@ -353,19 +354,17 @@ $listaServices = getServices();
             </div>
         </div>
     </div>
-    
+
     <div id="goTop" class="back-to-top">
         <a href="#"><i class="fas fa-arrow-circle-up fa-3x"></i></a>
     </div>
 
     <!-- Link do Counter Up -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="assets/libraries/counter-up/jquery.counterup.min.js"></script>
 
     <!-- Link do site -->
     <script src="assets/js/script.js"></script>
-    
 </body>
+
 </html>
-
-
