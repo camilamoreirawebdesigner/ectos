@@ -169,7 +169,7 @@ $dowloadsArchives = getDowloadsArchives();
                         <div class="container">
                             <div class="row mb-2">
                                 <div class="col">
-                                    <h4 class="fw-500">Planilha de cálculo de salário</h4>
+                                    <h4 class="fw-500 m-title">Planilha de cálculo de salário</h4>
                                     <hr class="line">
                                 </div>
                             </div>
@@ -332,34 +332,32 @@ $dowloadsArchives = getDowloadsArchives();
     <script> 
     //FUNÇÃO DO MODAL
     jQuery(document).ready(function($) {
-    let btnDetalhe  = document.querySelector(".btnDetalhe");
-    
-    $('#modal-arquivo-free').modal({
-        backdrop: true
-     })
+        let btnDetalhe  = document.querySelector(".btnDetalhe");
+       
+        var modalDetalhes = new bootstrap.Modal(document.getElementById("modal-arquivo-free"), {});
+        btnDetalhe.addEventListener("click", function(e){
+            
+            $.ajax({
+                type: "POST",
+                url: "assets/detalhesCurso.php",
+                dataType: "json",
+                data: {
+                    idCurso: e.target.getAttribute('data-id-curso')
+                },
+                success: function(response) {
+                    console.log(response.nome);
+                    document.querySelector('.m-title').innerText = response.nome;
 
+                    modalDetalhes.show();
+                },
+                error: function(error) {
+                    console.log('error');
+                }                
+            });   
 
-    $('.btnDetalhe').on('click', function(){
-        $('#modal-arquivo-free').show();
-
-        $.ajax({
-            type: "POST",
-            url: "./assets/detalhesCurso.php",
-            data: {
-               idCurso:e.target.getAttribute('data-id-curso')
-            },
-            success: function() {
-                console.log('success');
-            },
-            error: function(error) {
-               console.log('error');
-            },
-            dataType: "html"
-        });
-     
+        }, false);      
+        
     });
-    
-})
 
     </script>
 
