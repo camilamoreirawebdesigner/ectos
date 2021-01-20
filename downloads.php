@@ -1,9 +1,10 @@
-<?php 
-require 'assets/includes/functions.php'; 
+<?php
+require 'assets/includes/functions.php';
 $dowloadsArchives = getDowloadsArchives();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +34,7 @@ $dowloadsArchives = getDowloadsArchives();
         }
     </style>
 </head>
+
 <body>
     <!-- TOP MENU -->
     <div id="top-menu">
@@ -47,7 +49,7 @@ $dowloadsArchives = getDowloadsArchives();
                     <span>
                         <a href="https://www.instagram.com/ectosoficial/" target="blank">
                             <i class="fab fa-instagram"></i> ectosoficial
-                        </a>                        
+                        </a>
                     </span>
                 </div>
             </div>
@@ -86,8 +88,8 @@ $dowloadsArchives = getDowloadsArchives();
                 </ul>
             </div>
         </div>
-    </nav> 
-        
+    </nav>
+
     <!-- DOWNLOADS -->
     <div id="downloads">
         <div class="container mb-5">
@@ -110,31 +112,31 @@ $dowloadsArchives = getDowloadsArchives();
             </div>
             <div class="row">
                 <div class="col">
-                    <?php foreach($dowloadsArchives as $dowloadArchive): ?>
-                    <div class="arquivo mb-3">
-                        <div class="banner-free"><?=$dowloadArchive['type'] == 'P' ? 'pago' : 'free'; ?> </div>
-                        <h4 class="fw-500 col-8 title"><?=$dowloadArchive['title'];?></h4>
-                        <h6 class="fw-400 col-10 descritpion">
-                            <?=$dowloadArchive['description'];?>
-                        </h6>
-                        <div class="row mt-5">
-                            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                <button type="button" class="btn btn-default btnDetalhe" data-id-curso=<?=$dowloadArchive['id'];?> >DETALHES</button>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                                <ul>
-                                    <li><i class="fas fa-download fa-2x color-three"></i><br><?=$dowloadArchive['type'] == 'P' ? 'Solicitar orçamento' : 'Dowload gratuito'; ?></li>
-                                    <li><i class="fas fa-file-excel fa-2x color-three"></i><br><?=$dowloadArchive['titleArchive'];?></li>
+                    <?php foreach ($dowloadsArchives as $dowloadArchive) : ?>
+                        <div class="arquivo mb-3">
+                            <div class="<?=$dowloadArchive['type'] == 'P' ? 'banner-pago' : 'banner-free'; ?>"><?= $dowloadArchive['type'] == 'P' ? 'pago' : 'free'; ?> </div>
+                            <h4 class="fw-500 col-8 title"><?= $dowloadArchive['title']; ?></h4>
+                            <h6 class="fw-400 col-10 descritpion">
+                                <?= $dowloadArchive['description']; ?>
+                            </h6>
+                            <div class="row mt-5">
+                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                    <button type="button" class="btn btn-default <?=$dowloadArchive['type'] == 'P' ? 'btnDetalhePago' : 'btnDetalheFree'; ?>" data-id-curso=<?= $dowloadArchive['id']; ?>>DETALHES</button>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                                    <ul>
+                                        <li><i class="fas fa-download fa-2x color-three"></i><br><?= $dowloadArchive['type'] == 'P' ? 'Solicitar orçamento' : 'Dowload gratuito'; ?></li>
+                                        <li><i class="fas fa-file-excel fa-2x color-three"></i><br><?= $dowloadArchive['titleArchive']; ?></li>
 
-                                    <li><i class="fab fa-windows fa-2x color-three"></i><br><?=$dowloadArchive['disponivelPara']; ?></li>
-                                </ul>
+                                        <li><i class="fab <?= $dowloadArchive['iconeDisponivelPara']; ?> fa-2x color-three"></i><br><?= $dowloadArchive['disponivelPara']; ?></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     <?php endforeach; ?>
 
-                   
-                    <div class="arquivo mb-3">
+
+                    <div class="arquivo mb-3" style="display:none;">
                         <div class="banner-pago">pago</div>
                         <h4 class="fw-500 col-8">Planilha de cálculo de salário</h4>
                         <h6 class="fw-400 col-10">
@@ -176,34 +178,37 @@ $dowloadsArchives = getDowloadsArchives();
 
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                                    <h6 class="fw-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis saepe, laudantium a soluta nam cum. Dolore at facilis inventore dolorem harum quos non vel, maiores officiis, maxime magnam quod qui?</h6>
+                                    <h6 class="fw-400 m-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis saepe, laudantium a soluta nam cum. Dolore at facilis inventore dolorem harum quos non vel, maiores officiis, maxime magnam quod qui?</h6>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
                                     <img src="assets/img/arquivo.png" alt="">
-                                    <p><em>O arquivo contém 10MB.</em></p>
+                                    <p><em class="m-size">O arquivo contém 10MB.</em></p>
                                 </div>
                             </div>
 
-                            <div id="dow-galeria" class="row mt-2">
-                                <div class="col">
-                                    <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col">
-                                    <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col">
-                                    <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                            <div id="imgs-galeria-free">
+                                <div id="dow-galeria" class="row mt-2 modelDow" style="display:none;">
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid img-modal" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid img-modal" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid img-modal" alt="">
+                                    </div>
                                 </div>
                             </div>
+
 
                             <div class="row mt-4">
                                 <div class="col">
-                                    <button type="button" class="btn btn-default">
+                                    <a type="button" class="btn btn-default m-link">
                                         <i class="fas fa-download"></i> Baixar agora
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
-                        </div>                         
+                        </div>
 
                     </div>
                 </div>
@@ -222,30 +227,32 @@ $dowloadsArchives = getDowloadsArchives();
                         <div class="container">
                             <div class="row mb-2">
                                 <div class="col">
-                                    <h4 class="fw-500">Planilha de cálculo de salário</h4>
+                                    <h4 class="fw-500 title-pago">Planilha de cálculo de salário</h4>
                                     <hr class="line">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                                    <h6 class="fw-400">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis saepe, laudantium a soluta nam cum. Dolore at facilis inventore dolorem harum quos non vel, maiores officiis, maxime magnam quod qui?</h6>
+                                    <h6 class="fw-400 description-pago">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis saepe, laudantium a soluta nam cum. Dolore at facilis inventore dolorem harum quos non vel, maiores officiis, maxime magnam quod qui?</h6>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-center">
                                     <img src="assets/img/arquivo.png" alt="">
-                                    <p><em>O arquivo contém 10MB.</em></p>
+                                    <p><em class="size-pago">O arquivo contém 10MB.</em></p>
                                 </div>
                             </div>
 
-                            <div id="dow-galeria" class="row mt-5">
-                                <div class="col">
-                                    <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col">
-                                    <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="col">
-                                    <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                            <div id="imgs-galeria-pago">
+                                <div id="dow-galeria" class="row mt-5 modelDow" style="display:none;">
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="col">
+                                        <img src="assets/img/no-image.jpg" class="img-fluid" alt="">
+                                    </div>
                                 </div>
                             </div>
 
@@ -297,7 +304,7 @@ $dowloadsArchives = getDowloadsArchives();
                                     </button>
                                 </div>
                             </div>
-                        </div>                         
+                        </div>
 
                     </div>
                 </div>
@@ -315,7 +322,7 @@ $dowloadsArchives = getDowloadsArchives();
             </div>
         </div>
     </div>
-    
+
     <div id="goTop" class="back-to-top">
         <a href="#"><i class="fas fa-arrow-circle-up fa-3x"></i></a>
     </div>
@@ -327,41 +334,143 @@ $dowloadsArchives = getDowloadsArchives();
     <!-- Link do site -->
     <script src="assets/js/contadores.js"></script>
     <script src="assets/js/botaoTopo.js"></script>
-   
 
-    <script> 
-    //FUNÇÃO DO MODAL
-    jQuery(document).ready(function($) {
-        let btnDetalhe  = document.querySelector(".btnDetalhe");
-       
-        var modalDetalhes = new bootstrap.Modal(document.getElementById("modal-arquivo-free"), {});
-        btnDetalhe.addEventListener("click", function(e){
-            
-            $.ajax({
-                type: "POST",
-                url: "assets/detalhesCurso.php",
-                dataType: "json",
-                data: {
-                    idCurso: e.target.getAttribute('data-id-curso')
-                },
-                success: function(response) {
-                    console.log(response.nome);
-                    document.querySelector('.m-title').innerText = response.nome;
 
-                    modalDetalhes.show();
-                },
-                error: function(error) {
-                    console.log('error');
-                }                
-            });   
+    <script>
+        //FUNÇÃO DO MODAL FREE
+        jQuery(document).ready(function($) {
+            let btnDetalheFree = document.querySelector(".btnDetalheFree");
+            let btnDetalhePago = document.querySelector(".btnDetalhePago");
 
-        }, false);      
-        
-    });
+            let modalDetalhesFree = new bootstrap.Modal(document.getElementById("modal-arquivo-free"), {});
+            let modalDetalhesPago = new bootstrap.Modal(document.getElementById("modal-arquivo-pago"), {});
 
+            btnDetalheFree.addEventListener("click", function(e) {
+                
+                $('#imgs-galeria-free #dow-galeria').not('.modelDow').remove();
+
+                $.ajax({
+                    type: "POST",
+                    url: "assets/detalhesCurso.php",
+                    dataType: "json",
+                    data: {
+                        idCurso: e.target.getAttribute('data-id-curso')
+                    },
+                    success: function(response) {
+                        document.querySelector('.m-title').innerText = response.nome;
+                        document.querySelector('.m-description').innerText = response.descricao;
+                        document.querySelector('.m-link').setAttribute('href', response.link);
+                        document.querySelector('.m-size').innerText = response.tamanho + "mb";
+                        let imagens = response.imagens;
+
+                        if (imagens) {
+                            let galeriaFree = document.querySelector("#imgs-galeria-free");
+                            let imgsModal = document.querySelector("#imgs-galeria-free .modelDow").cloneNode(true);
+                            imgsModal.classList.remove('modelDow');
+                            imgsModal.style.display = "flex";
+                            galeriaFree.append(imgsModal);
+
+                            let contador = 0;
+                            for (let i = 0; i < imagens.length; i++) {
+
+                                if (contador == 3) {
+                                    imgsModal = document.querySelector('#imgs-galeria-free .modelDow').cloneNode(true);
+                                    imgsModal.classList.remove('modelDow');
+                                    imgsModal.style.display = "flex";
+                                    document.querySelector('#imgs-galeria-free').append(imgsModal);
+                                    contador = 0;
+                                }
+
+                                let urlImg = 'data:image/jpg;base64,' + imagens[i];
+                                let img =  $('#imgs-galeria-free #dow-galeria:not(.modelDow) img')[i];
+                                img.setAttribute('src', urlImg);
+                                img.classList.add('showImage');
+
+                                contador++;
+                            }
+                            
+                            $('#imgs-galeria-free #dow-galeria:not(.modelDow) img:not(.showImage)').remove();
+
+                        } else {
+                            document.querySelector("#imgs-galeria-free .modelDow").style.display = "flex";
+                        }
+
+                        modalDetalhesFree.show();
+                    },
+                    error: function(error) {
+                        console.log('error');
+                    }
+                });
+
+            }, false);
+
+            //MODAL PAGO 
+            btnDetalhePago.addEventListener("click", function(e) {
+                   
+
+                $.ajax({
+                    type: "POST",
+                    url: "assets/detalhesCurso.php",
+                    dataType: "json",
+                    data: {
+                        idCurso: e.target.getAttribute('data-id-curso')
+                    },
+                    success: function(response) {
+                        document.querySelector('.titlePago').innerText = response.nome;
+                        document.querySelector('.description-ago').innerText = response.descricao;
+                        document.querySelector('.size-pago').innerText = response.tamanho + "mb";
+                        let imagens = response.imagens;
+
+                        if (imagens) {
+                            let galeriaFree = document.querySelector("#imgs-galeria-pago");
+                            let imgsModal = document.querySelector("#imgs-galeria-pago .modelDow").cloneNode(true);
+                            imgsModal.classList.remove('modelDow');
+                            imgsModal.style.display = "flex";
+                            galeriaFree.append(imgsModal);
+
+                            let contador = 0;
+                            for (let i = 0; i < imagens.length; i++) {
+
+                                if (contador == 3) {
+                                    imgsModal = document.querySelector('#imgs-galeria-pago .modelDow').cloneNode(true);
+                                    imgsModal.classList.remove('modelDow');
+                                    imgsModal.style.display = "flex";
+                                    document.querySelector('#imgs-galeria-pago').append(imgsModal);
+                                    contador = 0;
+                                }
+
+                                let urlImg = 'data:image/jpg;base64,' + imagens[i];
+                                let img =  $('#imgs-galeria-pago #dow-galeria:not(.modelDow) img')[i];
+                                img.setAttribute('src', urlImg);
+                                img.classList.add('showImage');
+
+                                contador++;
+                            }
+                            
+                            $('#imgs-galeria-pago #dow-galeria:not(.modelDow) img:not(.showImage)').remove();
+
+                        } else {
+                            document.querySelector("#imgs-galeria-pago .modelDow").style.display = "flex";
+                        }
+
+                        modalDetalhesPago.show();
+                    },
+                    error: function(error) {
+                        console.log('error');
+                    }
+                });
+                   
+
+
+            })
+
+
+
+
+
+        });
     </script>
 
 </body>
+
 </html>
-
-

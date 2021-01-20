@@ -1,5 +1,7 @@
 jQuery(document).ready(function( $ ) {
 
+ 
+
     //FUNÇÃO PARA ENVIAR EMAIL INDEX
     let btnEnviar = document.getElementById("btnEnviar");
         btnEnviar.addEventListener('click', function() {

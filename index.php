@@ -362,7 +362,7 @@ $listaServices = getServices();
     <!-- Link do Counter Up -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="assets/libraries/counter-up/jquery.counterup.min.js"></script>
-
+    
     <!-- Link do site -->
     <script src="assets/js/contadores.js"></script>
     <script src="assets/js/botaoTopo.js"></script>
