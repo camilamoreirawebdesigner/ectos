@@ -272,6 +272,7 @@ a.nav-link:hover {
     }
 }
 
+
 @media screen and (max-width: 992px) and (min-width: 768px) { /* grid md*/
     #box-pilares span {
         padding: 35px;

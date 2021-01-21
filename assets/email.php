@@ -2,6 +2,7 @@
 //PEGANDO TIPO DE EMAIL 
 $tipoEmail = filter_input(INPUT_POST, 'tipoEmail');
 $mensagem; 
+$assunto;
 switch ($tipoEmail) {
 
     case 1:
@@ -13,6 +14,16 @@ switch ($tipoEmail) {
         $mensagem =  filter_input(INPUT_POST, 'mensagem');
     break;
 
+    case 2:
+        $nome = filter_input(INPUT_POST, 'nome');
+        $whatsaap = filter_input(INPUT_POST, 'whats');    
+        $email = filter_input(INPUT_POST, 'email');
+        $quantidade = filter_input(INPUT_POST,'qtd');
+        $curso =  filter_input(INPUT_POST,'curso');
+
+        $assunto = utf8_decode("Solicitação orçamento");
+        $mensagem = "Solicitação de orçamento: Email:".$email." Whatsaap:".$whatsaap."Curso:".$curso." Quantidade email".$quantidade;
+    break;    
 }
 
 

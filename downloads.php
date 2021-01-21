@@ -1,6 +1,13 @@
 <?php
 require 'assets/includes/functions.php';
-$dowloadsArchives = getDowloadsArchives();
+$page = filter_input(INPUT_GET,'page');
+if($page){
+    $dowloadsArchives = getDowloadsArchives($page);
+} else {
+    $dowloadsArchives = getDowloadsArchives(0);
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,14 +121,14 @@ $dowloadsArchives = getDowloadsArchives();
                 <div class="col">
                     <?php foreach ($dowloadsArchives as $dowloadArchive) : ?>
                         <div class="arquivo mb-3">
-                            <div class="<?=$dowloadArchive['type'] == 'P' ? 'banner-pago' : 'banner-free'; ?>"><?= $dowloadArchive['type'] == 'P' ? 'pago' : 'free'; ?> </div>
+                            <div class="<?= $dowloadArchive['type'] == 'P' ? 'banner-pago' : 'banner-free'; ?>"><?= $dowloadArchive['type'] == 'P' ? 'pago' : 'free'; ?> </div>
                             <h4 class="fw-500 col-8 title"><?= $dowloadArchive['title']; ?></h4>
                             <h6 class="fw-400 col-10 descritpion">
-                                <?= $dowloadArchive['description']; ?>
+                                <?=$dowloadArchive['description']; ?>
                             </h6>
                             <div class="row mt-5">
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                    <button type="button" class="btn btn-default <?=$dowloadArchive['type'] == 'P' ? 'btnDetalhePago' : 'btnDetalheFree'; ?>" data-id-curso=<?= $dowloadArchive['id']; ?>>DETALHES</button>
+                                    <button type="button" class="btn btn-default <?= $dowloadArchive['type'] == 'P' ? 'btnDetalhePago' : 'btnDetalheFree'; ?>" data-id-curso=<?= $dowloadArchive['id']; ?>>DETALHES</button>
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                     <ul>
@@ -134,6 +141,12 @@ $dowloadsArchives = getDowloadsArchives();
                             </div>
                         </div>
                     <?php endforeach; ?>
+
+                    <div class="course-pagination">
+                      <?php for($q = 0; $q<$dowloadsArchives[0][0]['totalPage']; $q++): ?>
+                        <a class="<?=$dowloadsArchives[0][1]['currentPage'] == $q ? 'active':'';?>" href="downloads.php?page=<?=$q;?>"> <?=$q+1;?> </a>
+                      <?php endfor; ?>
+                     </div> 
 
 
                     <div class="arquivo mb-3" style="display:none;">
@@ -203,7 +216,7 @@ $dowloadsArchives = getDowloadsArchives();
 
                             <div class="row mt-4">
                                 <div class="col">
-                                    <a type="button" class="btn btn-default m-link">
+                                    <a type="button" id="btnBaixarFree" class="btn btn-default m-link">
                                         <i class="fas fa-download"></i> Baixar agora
                                     </a>
                                 </div>
@@ -262,9 +275,21 @@ $dowloadsArchives = getDowloadsArchives();
                                 </div>
                             </div>
 
+                            <!-- MENSAGENS DE ALERTA -->
+                            <div class="alert alert-success alert-dismissible fade show oculta" role="alert">
+                                <strong>Oba!</strong> Recebemos o seu email de solicitação de orçamento, assim que possível retornamos o contato.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+
+                            <div class="alert alert-danger alert-dismissible fade show oculta" role="alert">
+                                <strong>Ops!</strong> Não conseguimos receber o seu email, tente novamente mais tarde.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+
+
                             <div class="row">
                                 <div class="col">
-                                    <form class="mt-3 mb-3" action="" method="POST">
+                                    <form class="mt-3 mb-3" method="POST">
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                                 <div class="mb-3">
@@ -299,7 +324,7 @@ $dowloadsArchives = getDowloadsArchives();
 
                             <div class="row">
                                 <div class="col">
-                                    <button type="button" class="btn btn-default">
+                                    <button type="button" id="BtnSolicitarOrcamento" class="btn btn-default">
                                         <i class="fas fa-dollar-sign"></i> Solicitar Orçamento
                                     </button>
                                 </div>
@@ -346,21 +371,24 @@ $dowloadsArchives = getDowloadsArchives();
             let modalDetalhesPago = new bootstrap.Modal(document.getElementById("modal-arquivo-pago"), {});
 
             btnDetalheFree.addEventListener("click", function(e) {
-                
+
                 $('#imgs-galeria-free #dow-galeria').not('.modelDow').remove();
+                
+                let idCurso = e.target.getAttribute('data-id-curso')
 
                 $.ajax({
                     type: "POST",
                     url: "assets/detalhesCurso.php",
                     dataType: "json",
                     data: {
-                        idCurso: e.target.getAttribute('data-id-curso')
+                        idCurso
                     },
                     success: function(response) {
                         document.querySelector('.m-title').innerText = response.nome;
                         document.querySelector('.m-description').innerText = response.descricao;
                         document.querySelector('.m-link').setAttribute('href', response.link);
                         document.querySelector('.m-size').innerText = response.tamanho + "mb";
+                        document.querySelector("#btnBaixarFree").setAttribute("idCurso",idCurso);
                         let imagens = response.imagens;
 
                         if (imagens) {
@@ -382,13 +410,13 @@ $dowloadsArchives = getDowloadsArchives();
                                 }
 
                                 let urlImg = 'data:image/jpg;base64,' + imagens[i];
-                                let img =  $('#imgs-galeria-free #dow-galeria:not(.modelDow) img')[i];
+                                let img = $('#imgs-galeria-free #dow-galeria:not(.modelDow) img')[i];
                                 img.setAttribute('src', urlImg);
                                 img.classList.add('showImage');
 
                                 contador++;
                             }
-                            
+
                             $('#imgs-galeria-free #dow-galeria:not(.modelDow) img:not(.showImage)').remove();
 
                         } else {
@@ -404,10 +432,49 @@ $dowloadsArchives = getDowloadsArchives();
 
             }, false);
 
+
+            //ENVIAR EMAIL MODAL PAGO 
+            document.getElementById('BtnSolicitarOrcamento').addEventListener("click", function(e) {
+
+                let curso = document.querySelector("#modal-arquivo-pago").querySelector(".title-pago").innerText
+                let nome = document.getElementsByName('nome')[0].value
+                let whats = document.getElementsByName('whats')[0].value
+                let email = document.getElementsByName('email')[0].value
+                let qtd = document.getElementsByName('qtd')[0].value
+
+                if (email && nome && whats && qtd) {
+                    $.ajax({
+                        type: "POST",
+                        url: "./assets/email.php",
+                        data: {
+                            nome,
+                            email,
+                            whats,
+                            qtd,
+                            curso,
+                            tipoEmail: 2
+                        },
+                        success: function() {
+                            document.querySelector('.alert-success').style.display = 'block';
+                        },
+                        error: function(error) {
+                            document.querySelector('.alert-danger').style.display = 'block';
+                        },
+                        dataType: "html"
+                    });
+                } else {
+                    alert("Por favor, preencha todos os campos corretamente!");
+                }
+
+
+
+            });
+
+
+
+
             //MODAL PAGO 
             btnDetalhePago.addEventListener("click", function(e) {
-                   
-
                 $.ajax({
                     type: "POST",
                     url: "assets/detalhesCurso.php",
@@ -416,9 +483,10 @@ $dowloadsArchives = getDowloadsArchives();
                         idCurso: e.target.getAttribute('data-id-curso')
                     },
                     success: function(response) {
-                        document.querySelector('.titlePago').innerText = response.nome;
-                        document.querySelector('.description-ago').innerText = response.descricao;
-                        document.querySelector('.size-pago').innerText = response.tamanho + "mb";
+                        let modal = document.querySelector("#modal-arquivo-pago");
+                        modal.querySelector(".title-pago").innerText = response.nome;
+                        modal.querySelector('.description-pago').innerText = response.descricao;
+                        modal.querySelector('.size-pago').innerText = response.tamanho + "mb";
                         let imagens = response.imagens;
 
                         if (imagens) {
@@ -440,13 +508,13 @@ $dowloadsArchives = getDowloadsArchives();
                                 }
 
                                 let urlImg = 'data:image/jpg;base64,' + imagens[i];
-                                let img =  $('#imgs-galeria-pago #dow-galeria:not(.modelDow) img')[i];
+                                let img = $('#imgs-galeria-pago #dow-galeria:not(.modelDow) img')[i];
                                 img.setAttribute('src', urlImg);
                                 img.classList.add('showImage');
 
                                 contador++;
                             }
-                            
+
                             $('#imgs-galeria-pago #dow-galeria:not(.modelDow) img:not(.showImage)').remove();
 
                         } else {
@@ -459,14 +527,30 @@ $dowloadsArchives = getDowloadsArchives();
                         console.log('error');
                     }
                 });
-                   
-
-
             })
 
 
+            //BOTÃO DE DOWLOAD FREE
+            let btnBaixarFree = document.querySelector("#btnBaixarFree");
+            btnBaixarFree.addEventListener("click", function(e) {
+                 
+                let idCurso = document.querySelector("#btnBaixarFree").getAttribute("idcurso");
 
-
+                $.ajax({
+                        type: "POST",
+                        url: "./assets/UpdateAmountDowload.php",
+                        data: {
+                           id:idCurso
+                        },
+                        success: function() {
+                            
+                        },
+                        error: function(error) {
+                           
+                        },
+                        dataType: "html"
+                    });
+            })    
 
         });
     </script>
