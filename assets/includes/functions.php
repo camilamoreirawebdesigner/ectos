@@ -66,7 +66,7 @@ function getDowloadsArchives($page) {
       break;
       case 'T':
         $sistemaDisponivel = "Todos os sistemas";
-        $iconeDisponivel = "fa-globe";
+        $iconeDisponivel = "fa-globe-americas";
     }
     
     $item['disponivelPara'] = $sistemaDisponivel;
@@ -138,7 +138,7 @@ function searchArchiveDowload($value,$page){
     break;
     case 'T':
       $sistemaDisponivel = "Todos os sistemas";
-      $iconeDisponivel = "fa-globe";
+      $iconeDisponivel = "fa-globe-americas";
   }
   
   $item['disponivelPara'] = $sistemaDisponivel;
