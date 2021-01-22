@@ -76,9 +76,13 @@ function getDowloadsArchives($page) {
 
   }
    
-  $totalCourse = count(getCountDowloads());
-  $resultado[0][] = ['totalPage' => $totalCourse / $perPage]; 
-  $resultado[0][] = ['currentPage' => $page];
+  if(count($resultado) > 0){
+    
+    $totalCourse = count(getCountDowloads());
+    $resultado[0][] = ['totalPage' => $totalCourse / $perPage]; 
+    $resultado[0][] = ['currentPage' => $page];
+  
+  } 
 
   return $resultado;
 }
