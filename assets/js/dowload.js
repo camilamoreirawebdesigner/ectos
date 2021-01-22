@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
                 document.querySelector('.m-title').innerText = response.nome;
                 document.querySelector('.m-description').innerText = response.descricao;
                 document.querySelector('.m-link').setAttribute('href', response.link);
-                document.querySelector('.m-size').innerText = response.tamanho + "mb";
+                document.querySelector('.m-size').innerText = response.tamanho;
                 document.querySelector("#btnBaixarFree").setAttribute("idCurso",idCurso);
                 let imagens = response.imagens;
 
@@ -129,7 +129,7 @@ jQuery(document).ready(function($) {
                 let modal = document.querySelector("#modal-arquivo-pago");
                 modal.querySelector(".title-pago").innerText = response.nome;
                 modal.querySelector('.description-pago').innerText = response.descricao;
-                modal.querySelector('.size-pago').innerText = response.tamanho + "mb";
+                modal.querySelector('.size-pago').innerText = response.tamanho;
                 let imagens = response.imagens;
 
                 if (imagens) {
