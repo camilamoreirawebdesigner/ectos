@@ -1,10 +1,11 @@
 <?php
 require 'assets/includes/functions.php';
+$arquivo = filter_input(INPUT_GET,'arquivo');
 $page = filter_input(INPUT_GET,'page');
 if($page){
-    $dowloadsArchives = getDowloadsArchives($page);
+    $dowloadsArchives = searchArchiveDowload($arquivo,$page);
 } else {
-    $dowloadsArchives = getDowloadsArchives(0);
+    $dowloadsArchives = searchArchiveDowload($arquivo,0);
 }
 
 
@@ -109,17 +110,17 @@ if($page){
             </div>
             <div class="row justify-content-md-center mb-5 mt-5">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <form action="search.php" method="GET">
+                    <form action="search.php">
                         <div class="input-group mb-3">
-                            <input type="text" name="arquivo" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo..." required>
-                            <button type="submit" class="input-group-text button-filter" style="text-decoration: none;" id="btnSearch"><i class="fas fa-search"></i></button>
+                            <input type="text" class="form-control" name="arquivo" placeholder="Busque um arquivo..." aria-label="Busque um arquivo...">
+                            <button type="submit" class="input-group-text button-filter"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                   <?php if(count($dowloadsArchives) > 0): ?> 
+                <?php if(count($dowloadsArchives) > 0): ?>  
                     <?php foreach ($dowloadsArchives as $dowloadArchive) : ?>
                         <div class="arquivo mb-3">
                             <div class="<?= $dowloadArchive['type'] == 'P' ? 'banner-pago' : 'banner-free'; ?>"><?= $dowloadArchive['type'] == 'P' ? 'pago' : 'free'; ?> </div>
@@ -142,21 +143,21 @@ if($page){
                             </div>
                         </div>
                     <?php endforeach; ?>
-                   <?php endif; ?>
-                   
-                   <?php if(count($dowloadsArchives) < 1): ?>
-                     <div> 
-                        
-                         Não existem registros.
-
-                     </div>
-                    <?php endif; ?>
+                    <?php endif; ?> 
 
                     <div class="course-pagination">
+                     <?php if(count($dowloadsArchives) > 0): ?>   
                       <?php for($q = 0; $q<$dowloadsArchives[0][0]['totalPage']; $q++): ?>
-                        <a class="<?=$dowloadsArchives[0][1]['currentPage'] == $q ? 'active':'';?>" href="downloads.php?page=<?=$q;?>"> <?=$q+1;?> </a>
+                        <a class="<?=$dowloadsArchives[0][1]['currentPage'] == $q ? 'active':'';?>" href="search.php?page=<?=$q;?>&arquivo=<?=$arquivo;?>"> <?=$q+1;?> </a>
                       <?php endfor; ?>
+                     <?php endif; ?>
                      </div> 
+
+                     <?php if(count($dowloadsArchives) < 1): ?>
+                     <div style="height:200px;text-align:center;"> 
+                        <h1> Registros não encontrados. </h1>
+                     </div>
+                    <?php endif; ?>
 
 
                     <div class="arquivo mb-3" style="display:none;">
@@ -371,8 +372,7 @@ if($page){
     <script src="assets/js/botaoTopo.js"></script>
     <script src="assets/js/dowload.js"> </script>
 
-  
-
+   
 </body>
 
 </html>

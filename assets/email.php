@@ -3,6 +3,7 @@
 $tipoEmail = filter_input(INPUT_POST, 'tipoEmail');
 $mensagem; 
 $assunto;
+$emailDestinatario;
 switch ($tipoEmail) {
 
     case 1:
@@ -12,6 +13,8 @@ switch ($tipoEmail) {
         $email = filter_input(INPUT_POST, 'email');
         $assunto = filter_input(INPUT_POST, 'assunto');
         $mensagem =  filter_input(INPUT_POST, 'mensagem');
+
+        $emailDestinatario = $email;
     break;
 
     case 2:
@@ -23,6 +26,8 @@ switch ($tipoEmail) {
 
         $assunto = utf8_decode("Solicitação orçamento");
         $mensagem = "Solicitação de orçamento: Email:".$email." Whatsaap:".$whatsaap."Curso:".$curso." Quantidade email".$quantidade;
+
+        $emailDestinatario = 'contato@camilamoreira.com.br';
     break;    
 }
 
@@ -52,7 +57,7 @@ try {
 
     //Recipients
     $mail->setFrom('contato@camilamoreira.com.br', 'Camila');
-    $mail->addAddress($email, $nome);     // Add a recipient
+    $mail->addAddress($emailDestinatario, $nome);     // Add a recipient
 
 
     // Content
