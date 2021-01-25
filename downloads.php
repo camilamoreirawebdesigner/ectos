@@ -146,7 +146,7 @@ if ($page) {
 
 
 
-                    <div class="course-pagination">
+                    <div class="course-pagination mb-5">
                         <?php if (count($dowloadsArchives) > 0) : ?>
                             <?php for ($q = 0; $q < $dowloadsArchives[0][0]['totalPage']; $q++) : ?>
                                 <a style="border-radius:4px;color:#fff;" class="<?= $dowloadsArchives[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="downloads.php?page=<?= $q; ?>"> <?= $q + 1; ?> </a>
