@@ -122,23 +122,23 @@ function searchArchiveDowload($value,$page){
     switch ($item['system']) {
     case 'W':
     $sistemaDisponivel = 'Disponivel para windows';
-    $iconeDisponivel = 'fa-windows';
+    $iconeDisponivel = '<i class="fa-2x color-three fab fa-windows"></i>';
     break;
     case 'M':
     $sistemaDisponivel = 'Disponivel para Mac';
-    $iconeDisponivel = 'fa-apple';
+    $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
     break;
     case 'A':
     $sistemaDisponivel = 'Disponivel para Android';
-    $iconeDisponivel = 'fa-android';
+    $iconeDisponivel = '<i class="fa-2x color-three fab fa-android"></i>';
     break;
     case 'I':
     $sistemaDisponivel = 'Disponivel para Iphone';
-    $iconeDisponivel = 'fa-apple';
+    $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
     break;
     case 'T':
       $sistemaDisponivel = "Todos os sistemas";
-      $iconeDisponivel = "fa-globe-americas";
+      $iconeDisponivel = "fa-2x color-three fa-globe-americas";
   }
   
   $item['disponivelPara'] = $sistemaDisponivel;

@@ -134,10 +134,10 @@ if($page){
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                     <ul>
-                                        <li><i class="fas fa-download fa-2x color-three"></i><br><?= $dowloadArchive['type'] == 'P' ? 'Solicitar orçamento' : 'Dowload gratuito'; ?></li>
-                                        <li><?=$dowloadArchive['iconArchive'];?><br><?= $dowloadArchive['titleArchive']; ?></li>
+                                        <li><i class="fas fa-2x color-three fa-download"></i><br><?= $dowloadArchive['type'] == 'P' ? 'Solicitar orçamento' : 'Dowload gratuito'; ?></li>
+                                        <li id="liArchive"><?=$dowloadArchive['iconArchive'];?><br><?= $dowloadArchive['titleArchive']; ?></li>
 
-                                        <li><i class="fas <?= $dowloadArchive['iconeDisponivelPara']; ?> fa-2x color-three"></i><br><?= $dowloadArchive['disponivelPara']; ?></li>
+                                        <li><?= $dowloadArchive['iconeDisponivelPara']; ?><br><?= $dowloadArchive['disponivelPara']; ?></li>
                                     </ul>
                                 </div>
                             </div>
