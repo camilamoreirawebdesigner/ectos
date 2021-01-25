@@ -35,7 +35,7 @@ function getCountDowloads(){
 function getDowloadsArchives($page) {
 
   require 'conection.php';
-  $perPage = 10;
+  $perPage = 5;
   $sql = $pdo->prepare("SELECT * FROM dowloads ORDER BY orderr LIMIT :page,:perPage");
   $sql->bindValue(":perPage",$perPage,PDO::PARAM_INT);
   $sql->bindValue(":page",$page,PDO::PARAM_INT);
@@ -103,7 +103,7 @@ function getCountDowloadsSearch($value){
 
 function searchArchiveDowload($value,$page){
   require 'conection.php';
-  $perPage = 10;
+  $perPage = 5;
   $dowloadsArchives = [];
   $resultado = [];
   $sql = $pdo->prepare("SELECT * FROM dowloads WHERE title LIKE CONCAT('%', :value, '%') ORDER BY orderr  LIMIT :page,:perPage");

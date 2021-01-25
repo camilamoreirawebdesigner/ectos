@@ -228,7 +228,7 @@ if ($page) {
 
                             <div class="row mt-4">
                                 <div class="col">
-                                    <a type="button" id="btnBaixarFree" class="btn btn-default m-link">
+                                    <a type="button" id="btnBaixarFree" class="btn btn-default m-link" target="blank">
                                         <i class="fas fa-download"></i> Baixar agora
                                     </a>
                                 </div>
