@@ -1,7 +1,7 @@
 <?php
 require 'assets/includes/functions.php';
-$page = filter_input(INPUT_GET,'page');
-if($page){
+$page = filter_input(INPUT_GET, 'page');
+if ($page) {
     $dowloadsArchives = getDowloadsArchives($page);
 } else {
     $dowloadsArchives = getDowloadsArchives(0);
@@ -119,45 +119,45 @@ if($page){
             </div>
             <div class="row">
                 <div class="col">
-                   <?php if(count($dowloadsArchives) > 0): ?> 
-                    <?php foreach ($dowloadsArchives as $dowloadArchive) : ?>
-                        <div class="arquivo mb-3">
-                            <div class="<?= $dowloadArchive['type'] == 'P' ? 'banner-pago' : 'banner-free'; ?>"><?= $dowloadArchive['type'] == 'P' ? 'pago' : 'free'; ?> </div>
-                            <h4 class="fw-500 col-8 title"><?= $dowloadArchive['title']; ?></h4>
-                            <h6 class="fw-400 col-10 descritpion">
-                                <?=$dowloadArchive['description']; ?>
-                            </h6>
-                            <div class="row mt-5">
-                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-                                    <button type="button" class="btn btn-default <?= $dowloadArchive['type'] == 'P' ? 'btnDetalhePago' : 'btnDetalheFree'; ?>" data-id-curso=<?= $dowloadArchive['id']; ?>>DETALHES</button>
-                                </div>
-                                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
-                                    <ul>
-                                        <li><i class="fas fa-download fa-2x color-three"></i><br><?= $dowloadArchive['type'] == 'P' ? 'Solicitar orçamento' : 'Dowload gratuito'; ?></li>
-                                        <li><?=$dowloadArchive['iconArchive'];?><br><?= $dowloadArchive['titleArchive']; ?></li>
+                    <?php if (count($dowloadsArchives) > 0) : ?>
+                        <?php foreach ($dowloadsArchives as $dowloadArchive) : ?>
+                            <div class="arquivo mb-3">
+                                <div class="<?= $dowloadArchive['type'] == 'P' ? 'banner-pago' : 'banner-free'; ?>"><?= $dowloadArchive['type'] == 'P' ? 'pago' : 'free'; ?> </div>
+                                <h4 class="fw-500 col-8 title"><?= $dowloadArchive['title']; ?></h4>
+                                <h6 class="fw-400 col-10 descritpion">
+                                    <?= $dowloadArchive['description']; ?>
+                                </h6>
+                                <div class="row mt-5">
+                                    <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                        <button type="button" class="btn btn-default <?= $dowloadArchive['type'] == 'P' ? 'btnDetalhePago' : 'btnDetalheFree'; ?>" data-id-curso=<?= $dowloadArchive['id']; ?>>DETALHES</button>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                                        <ul>
+                                            <li><i class="fas fa-download fa-2x color-three"></i><br><?= $dowloadArchive['type'] == 'P' ? 'Solicitar orçamento' : 'Dowload gratuito'; ?></li>
+                                            <li id="liArchive"><?= $dowloadArchive['iconArchive']; ?><br><?= $dowloadArchive['titleArchive']; ?></li>
 
-                                        <li><i class="fas <?=$dowloadArchive['iconeDisponivelPara'];?> fa-2x color-three"></i><br><?= $dowloadArchive['disponivelPara']; ?></li>
-                                    </ul>
+                                            <li><?= $dowloadArchive['iconeDisponivelPara']; ?><br><?= $dowloadArchive['disponivelPara']; ?></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
-                   <?php endif; ?>
-    
-                  
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+
 
                     <div class="course-pagination">
-                    <?php if(count($dowloadsArchives) > 0): ?>      
-                      <?php for($q = 0; $q<$dowloadsArchives[0][0]['totalPage']; $q++): ?>
-                        <a class="<?=$dowloadsArchives[0][1]['currentPage'] == $q ? 'active':'';?>" href="downloads.php?page=<?=$q;?>"> <?=$q+1;?> </a>
-                      <?php endfor; ?>
-                      <?php endif; ?> 
-                     </div> 
+                        <?php if (count($dowloadsArchives) > 0) : ?>
+                            <?php for ($q = 0; $q < $dowloadsArchives[0][0]['totalPage']; $q++) : ?>
+                                <a style="border-radius:50%;color:#fff;" class="<?= $dowloadsArchives[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="downloads.php?page=<?= $q; ?>"> <?= $q + 1; ?> </a>
+                            <?php endfor; ?>
+                        <?php endif; ?>
+                    </div>
 
-                     <?php if(count($dowloadsArchives) < 1): ?>
-                     <div style="height:200px;text-align:center;"> 
-                        <h1> Registros não encontrados. </h1>
-                     </div>
+                    <?php if (count($dowloadsArchives) < 1) : ?>
+                        <div style="height:200px;text-align:center;">
+                            <h1> Registros não encontrados. </h1>
+                        </div>
                     <?php endif; ?>
 
 
@@ -364,6 +364,12 @@ if($page){
         <a href="#"><i class="fas fa-arrow-circle-up fa-3x"></i></a>
     </div>
 
+    <div class="loading-modal text-light" tabindex="-1" style="display:none;">
+        <div class="spinner-border" role="status" style="position:relative; top:50%;">
+            <span class="sr-only">Carregando...</span>
+        </div>
+    </div>
+
     <!-- Link do Counter Up -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="assets/libraries/counter-up/jquery.counterup.min.js"></script>
@@ -373,7 +379,7 @@ if($page){
     <script src="assets/js/botaoTopo.js"></script>
     <script src="assets/js/dowload.js"> </script>
 
-  
+
 
 </body>
 

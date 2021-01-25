@@ -8,6 +8,9 @@ jQuery(document).ready(function($) {
     
     try {
     btnDetalheFree.addEventListener("click", function(e) {
+        
+        document.querySelector("body").classList.add("loading-open");
+        document.querySelector(".loading-modal").style.display = "block";
 
         $('#imgs-galeria-free #dow-galeria').not('.modelDow').remove();
         
@@ -21,6 +24,8 @@ jQuery(document).ready(function($) {
                 idCurso
             },
             success: function(response) {
+                document.querySelector(".loading-modal").style.display = "none";
+                document.querySelector("body").classList.remove("loading-open");
                 document.querySelector('.m-title').innerText = response.nome;
                 document.querySelector('.m-description').innerText = response.descricao;
                 document.querySelector('.m-link').setAttribute('href', response.link);
@@ -63,19 +68,20 @@ jQuery(document).ready(function($) {
                 modalDetalhesFree.show();
             },
             error: function(error) {
+                document.querySelector(".loading-modal").style.display = "none";
+                document.querySelector("body").classList.remove("loading-open");
                 console.log('error');
             }
         });
 
     }, false);
 } catch(e) {
-
+   
+    console.log("No momento não existe o botão!");
 
 }
-
-
-
-
+      
+   try {
     //ENVIAR EMAIL MODAL PAGO 
     document.getElementById('BtnSolicitarOrcamento').addEventListener("click", function(e) {
 
@@ -112,12 +118,20 @@ jQuery(document).ready(function($) {
 
 
     });
+    } 
+    catch (e) {
+        console.log("No momento não existe o botão!");
+    }
 
 
 
-
+    try {
     //MODAL PAGO 
     btnDetalhePago.addEventListener("click", function(e) {
+
+        document.querySelector("body").classList.add("loading-open");
+        document.querySelector(".loading-modal").style.display = "block";
+
         $.ajax({
             type: "POST",
             url: "assets/detalhesCurso.php",
@@ -126,6 +140,8 @@ jQuery(document).ready(function($) {
                 idCurso: e.target.getAttribute('data-id-curso')
             },
             success: function(response) {
+                document.querySelector(".loading-modal").style.display = "none";
+                document.querySelector("body").classList.remove("loading-open");
                 let modal = document.querySelector("#modal-arquivo-pago");
                 modal.querySelector(".title-pago").innerText = response.nome;
                 modal.querySelector('.description-pago').innerText = response.descricao;
@@ -172,9 +188,15 @@ jQuery(document).ready(function($) {
         });
     })
 
+   } catch (e) {
+    console.log("No momento não existe o botão!");
+   } 
+
 
     //BOTÃO DE DOWLOAD FREE
     let btnBaixarFree = document.querySelector("#btnBaixarFree");
+
+    try {
     btnBaixarFree.addEventListener("click", function(e) {
          
         let idCurso = document.querySelector("#btnBaixarFree").getAttribute("idcurso");
@@ -193,6 +215,26 @@ jQuery(document).ready(function($) {
                 },
                 dataType: "html"
             });
-    })    
+    })
+    
+  } catch (e) {
+    console.log("No momento não existe o botão!");
+  } 
+
+
+  //ADICIONANDO CLASSES EM ICONE DE ARQUIVO
+  let iconeArquivo = document.querySelectorAll("#liArchive i");
+  iconeArquivo.forEach(function (value,index){
+    value.classList.add("fa-2x");
+    value.classList.add("color-three");
+  });
+
+
+  //ADICIONANDO LOADING AO PESQUISAR
+  let btnSearch = document.querySelector("#btnSearch").addEventListener('click',function () {
+    document.querySelector("body").classList.add("loading-open");
+    document.querySelector(".loading-modal").style.display = "block";
+  });
+
 
 });

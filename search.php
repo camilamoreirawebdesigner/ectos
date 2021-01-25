@@ -113,7 +113,7 @@ if($page){
                     <form action="search.php">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="arquivo" placeholder="Busque um arquivo..." aria-label="Busque um arquivo...">
-                            <button type="submit" class="input-group-text button-filter"><i class="fas fa-search"></i></button>
+                            <button type="submit" class="input-group-text button-filter" id="btnSearch"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
                 </div>
@@ -135,9 +135,9 @@ if($page){
                                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                                     <ul>
                                         <li><i class="fas fa-download fa-2x color-three"></i><br><?= $dowloadArchive['type'] == 'P' ? 'Solicitar orçamento' : 'Dowload gratuito'; ?></li>
-                                        <li><i class="fas <?=$dowloadArchive['iconArchive'];?> fa-2x color-three"></i><br><?= $dowloadArchive['titleArchive']; ?></li>
+                                        <li><?=$dowloadArchive['iconArchive'];?><br><?= $dowloadArchive['titleArchive']; ?></li>
 
-                                        <li><i class="fab <?= $dowloadArchive['iconeDisponivelPara']; ?> fa-2x color-three"></i><br><?= $dowloadArchive['disponivelPara']; ?></li>
+                                        <li><i class="fas <?= $dowloadArchive['iconeDisponivelPara']; ?> fa-2x color-three"></i><br><?= $dowloadArchive['disponivelPara']; ?></li>
                                     </ul>
                                 </div>
                             </div>
@@ -361,6 +361,12 @@ if($page){
 
     <div id="goTop" class="back-to-top">
         <a href="#"><i class="fas fa-arrow-circle-up fa-3x"></i></a>
+    </div>
+
+    <div class="loading-modal text-light" tabindex="-1" style="display:none;">
+        <div class="spinner-border" role="status" style="position:relative; top:50%;">
+            <span class="sr-only">Carregando...</span>
+        </div>
     </div>
 
     <!-- Link do Counter Up -->

@@ -292,3 +292,18 @@ div.arquivo button {
 .course-pagination a:hover {
     background-color: #ddd;
 }
+
+/* LOADING MODAL */
+.loading-modal {
+    position: fixed;
+    top:0;
+    bottom:0;
+    background-color: #000;
+    opacity: 0.5;
+    width: 100%;
+    text-align: center;
+}
+
+.loading-open {
+    overflow: hidden;
+}
