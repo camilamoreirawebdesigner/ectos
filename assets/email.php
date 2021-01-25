@@ -25,7 +25,7 @@ switch ($tipoEmail) {
         $curso =  filter_input(INPUT_POST,'curso');
 
         $assunto = utf8_decode("Solicitação orçamento");
-        $mensagem = "Solicitação de orçamento: Email:".$email." Whatsaap:".$whatsaap."Curso:".$curso." Quantidade email".$quantidade;
+        $mensagem = "Solicitação de orçamento para arquivo.<br><br> Email: ".$email." <br> WhatsApp: ".$whatsaap." <br> Nome do arquivo: ".$curso." <br> Quantidade: ".$quantidade;
 
         $emailDestinatario = 'contato@camilamoreira.com.br';
     break;    

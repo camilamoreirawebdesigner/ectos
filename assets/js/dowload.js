@@ -1,85 +1,94 @@
 //FUNÇÃO DO MODAL FREE
 jQuery(document).ready(function($) {
-    let btnDetalheFree = document.querySelector(".btnDetalheFree");
-    let btnDetalhePago = document.querySelector(".btnDetalhePago");
+    let btnDetalheFree = document.querySelectorAll(".btnDetalheFree");
+    let btnDetalhePago = document.querySelectorAll(".btnDetalhePago");
 
     let modalDetalhesFree = new bootstrap.Modal(document.getElementById("modal-arquivo-free"), {});
     let modalDetalhesPago = new bootstrap.Modal(document.getElementById("modal-arquivo-pago"), {});
     
-    try {
-    btnDetalheFree.addEventListener("click", function(e) {
+ 
+    btnDetalheFree.forEach(function (value) {
+        try {
+        value.addEventListener("click", function(e) {
         
-        document.querySelector("body").classList.add("loading-open");
-        document.querySelector(".loading-modal").style.display = "block";
-
-        $('#imgs-galeria-free #dow-galeria').not('.modelDow').remove();
-        
-        let idCurso = e.target.getAttribute('data-id-curso')
-
-        $.ajax({
-            type: "POST",
-            url: "assets/detalhesCurso.php",
-            dataType: "json",
-            data: {
-                idCurso
-            },
-            success: function(response) {
-                document.querySelector(".loading-modal").style.display = "none";
-                document.querySelector("body").classList.remove("loading-open");
-                document.querySelector('.m-title').innerText = response.nome;
-                document.querySelector('.m-description').innerText = response.descricao;
-                document.querySelector('.m-link').setAttribute('href', response.link);
-                document.querySelector('.m-size').innerText = response.tamanho;
-                document.querySelector("#btnBaixarFree").setAttribute("idCurso",idCurso);
-                let imagens = response.imagens;
-
-                if (imagens) {
-                    let galeriaFree = document.querySelector("#imgs-galeria-free");
-                    let imgsModal = document.querySelector("#imgs-galeria-free .modelDow").cloneNode(true);
-                    imgsModal.classList.remove('modelDow');
-                    imgsModal.style.display = "flex";
-                    galeriaFree.append(imgsModal);
-
-                    let contador = 0;
-                    for (let i = 0; i < imagens.length; i++) {
-
-                        if (contador == 3) {
-                            imgsModal = document.querySelector('#imgs-galeria-free .modelDow').cloneNode(true);
-                            imgsModal.classList.remove('modelDow');
-                            imgsModal.style.display = "flex";
-                            document.querySelector('#imgs-galeria-free').append(imgsModal);
-                            contador = 0;
+            document.querySelector("body").classList.add("loading-open");
+            document.querySelector(".loading-modal").style.display = "block";
+    
+            $('#imgs-galeria-free #dow-galeria').not('.modelDow').remove();
+            
+            let idCurso = e.target.getAttribute('data-id-curso')
+    
+            $.ajax({
+                type: "POST",
+                url: "assets/detalhesCurso.php",
+                dataType: "json",
+                data: {
+                    idCurso
+                },
+                success: function(response) {
+                    document.querySelector(".loading-modal").style.display = "none";
+                    document.querySelector("body").classList.remove("loading-open");
+                    document.querySelector('.m-title').innerText = response.nome;
+                    document.querySelector('.m-description').innerText = response.descricao;
+                    document.querySelector('.m-link').setAttribute('href', response.link);
+                    document.querySelector('.m-size').innerText = response.tamanho;
+                    document.querySelector("#btnBaixarFree").setAttribute("idCurso",idCurso);
+                    let imagens = response.imagens;
+    
+                    if (imagens) {
+                        let galeriaFree = document.querySelector("#imgs-galeria-free");
+                        let imgsModal = document.querySelector("#imgs-galeria-free .modelDow").cloneNode(true);
+                        imgsModal.classList.remove('modelDow');
+                        imgsModal.style.display = "flex";
+                        galeriaFree.append(imgsModal);
+    
+                        let contador = 0;
+                        for (let i = 0; i < imagens.length; i++) {
+    
+                            if (contador == 3) {
+                                imgsModal = document.querySelector('#imgs-galeria-free .modelDow').cloneNode(true);
+                                imgsModal.classList.remove('modelDow');
+                                imgsModal.style.display = "flex";
+                                document.querySelector('#imgs-galeria-free').append(imgsModal);
+                                contador = 0;
+                            }
+    
+                            let urlImg = 'data:image/jpg;base64,' + imagens[i];
+                            let img = $('#imgs-galeria-free #dow-galeria:not(.modelDow) img')[i];
+                            img.setAttribute('src', urlImg);
+                            img.classList.add('showImage');
+    
+                            contador++;
                         }
-
-                        let urlImg = 'data:image/jpg;base64,' + imagens[i];
-                        let img = $('#imgs-galeria-free #dow-galeria:not(.modelDow) img')[i];
-                        img.setAttribute('src', urlImg);
-                        img.classList.add('showImage');
-
-                        contador++;
+    
+                        $('#imgs-galeria-free #dow-galeria:not(.modelDow) img:not(.showImage)').remove();
+    
+                    } else {
+                        document.querySelector("#imgs-galeria-free .modelDow").style.display = "flex";
                     }
-
-                    $('#imgs-galeria-free #dow-galeria:not(.modelDow) img:not(.showImage)').remove();
-
-                } else {
-                    document.querySelector("#imgs-galeria-free .modelDow").style.display = "flex";
+    
+                    modalDetalhesFree.show();
+                },
+                error: function(error) {
+                    document.querySelector(".loading-modal").style.display = "none";
+                    document.querySelector("body").classList.remove("loading-open");
+                    console.log('error');
                 }
+            });
+    
+        }, false);
+    } catch(e) {
+       
+        console.log("No momento não existe o botão!");
+    
+    }
 
-                modalDetalhesFree.show();
-            },
-            error: function(error) {
-                document.querySelector(".loading-modal").style.display = "none";
-                document.querySelector("body").classList.remove("loading-open");
-                console.log('error');
-            }
-        });
 
-    }, false);
-} catch(e) {
-   
-    console.log("No momento não existe o botão!");
 
-}
+
+
+    })
+    
       
    try {
     //ENVIAR EMAIL MODAL PAGO 
@@ -124,10 +133,11 @@ jQuery(document).ready(function($) {
     }
 
 
-
+    
+     btnDetalhePago.forEach(function (value,index) {
     try {
     //MODAL PAGO 
-    btnDetalhePago.addEventListener("click", function(e) {
+    value.addEventListener("click", function(e) {
 
         document.querySelector("body").classList.add("loading-open");
         document.querySelector(".loading-modal").style.display = "block";
@@ -191,6 +201,7 @@ jQuery(document).ready(function($) {
    } catch (e) {
     console.log("No momento não existe o botão!");
    } 
+})
 
 
     //BOTÃO DE DOWLOAD FREE
