@@ -213,9 +213,9 @@ div.arquivo button {
     padding: 20px 50px;
     border-top: 1px solid #01B6AD;
     color: #FFF;
-    /* position: absolute;
+    position: fixed;
     bottom: 0;
-    width: 100%; */
+    width: 100%;
 }
 
 #rodape a {
@@ -279,18 +279,20 @@ div.arquivo button {
 .course-pagination a {
     display: inline-block;
     padding: 7px 10px;
-    border:1px solid #ccc;
+    border:1px solid #01B6AD;
     margin:5px;
     text-decoration: none;
-    color:#000;
+    color:#FFF;
 }
 
 .course-pagination a.active {
-    background-color: #01B6AD;
+    background-color: #01756F;
+    border:1px solid #01B6AD;
 }
 
 .course-pagination a:hover {
-    background-color: #ddd;
+    background-color: #01756F;
+    border:1px solid #01B6AD;
 }
 
 /* LOADING MODAL */
