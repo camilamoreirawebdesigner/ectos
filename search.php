@@ -113,6 +113,7 @@ if($page){
                     <form action="search.php">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="arquivo" placeholder="Busque um arquivo..." aria-label="Busque um arquivo...">
+                            <span id="qtd-reg-filter" style="position: absolute; right: 0; top: 40px;">7 registros encontrados</span>
                             <button type="submit" class="input-group-text button-filter" id="btnSearch"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
