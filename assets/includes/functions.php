@@ -1,14 +1,16 @@
 <?php
+//PUXANDO CONEXÃO COM O BANCO 
+require 'conection.php';
+
 function getBanners() {
-  require 'conection.php';
+  global $pdo;
   $sql = $pdo->query("SELECT * FROM banners ORDER BY ordernacao");
   $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
   return $lista;
 }
 
 function getServices() {
-
-  require 'conection.php';
+  global $pdo;
   $sql = $pdo->query("SELECT * FROM services ORDER BY ordernacao");
   $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
   return $lista;
@@ -16,149 +18,146 @@ function getServices() {
 
 function getCourses() {
 
-  require 'conection.php';
+  global $pdo;
   $sql = $pdo->query("SELECT * FROM courses ORDER BY ordernacao");
   $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
   return $lista;
 }
 
-function getCountDowloads(){
-    
-  require 'conection.php';
+function getCountDowloads() {
+
+  global $pdo;
   $sql = $pdo->query("SELECT * FROM dowloads ORDER BY orderr");
   $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
   return $lista;
-
 }
 
 
 function getDowloadsArchives($page) {
-
-  require 'conection.php';
-  $perPage = 5;
-  $sql = $pdo->prepare("SELECT * FROM dowloads ORDER BY orderr LIMIT :page,:perPage");
-  $sql->bindValue(":perPage",$perPage,PDO::PARAM_INT);
-  $sql->bindValue(":page",$page,PDO::PARAM_INT);
-  $sql->execute();
-   
-  $dowloadsArchives = $sql->fetchAll(PDO::FETCH_ASSOC);
-  $resultado = []; 
   
+  global $pdo;
+  require 'vendor/autoload.php';
+
+  // usando query builder
+  $h = new \ClanCats\Hydrahon\Builder('mysql', function ($query, $queryString, $queryParameters) use ($pdo) {
+    $statement = $pdo->prepare($queryString);
+    $statement->execute($queryParameters);
+    if ($query instanceof \ClanCats\Hydrahon\Query\Sql\FetchableInterface) {
+      return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
+  });
+   
+  $perPage = 5;
+  $dowloads = $h->table('dowloads');
+  $dowloadsArchives = $dowloads->select()->orderBy('orderr','desc')->page($page,$perPage)->get();
+  $resultado = [];
+
   foreach ($dowloadsArchives as $item) {
-      $sistemaDisponivel = '';
-      $iconeDisponivel;
-      switch ($item['system']) {
+    $sistemaDisponivel = '';
+    $iconeDisponivel;
+    switch ($item['system']) {
       case 'W':
-      $sistemaDisponivel = 'Disponivel para windows';
-      $iconeDisponivel = '<i class="fa-2x color-three fab fa-windows"></i>';
-      break;
+        $sistemaDisponivel = 'Disponivel para windows';
+        $iconeDisponivel = '<i class="fa-2x color-three fab fa-windows"></i>';
+        break;
       case 'M':
-      $sistemaDisponivel = 'Disponivel para Mac';
-      $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
-      break;
+        $sistemaDisponivel = 'Disponivel para Mac';
+        $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
+        break;
       case 'A':
-      $sistemaDisponivel = 'Disponivel para Android';
-      $iconeDisponivel = '<i class="fa-2x color-three fab fa-android"></i>';
-      break;
+        $sistemaDisponivel = 'Disponivel para Android';
+        $iconeDisponivel = '<i class="fa-2x color-three fab fa-android"></i>';
+        break;
       case 'I':
-      $sistemaDisponivel = 'Disponivel para Iphone';
-      $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
-      break;
+        $sistemaDisponivel = 'Disponivel para Iphone';
+        $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
+        break;
       case 'T':
         $sistemaDisponivel = "Todos os sistemas";
         $iconeDisponivel = "fa-2x color-three fa-globe-americas";
     }
-    
+
     $item['disponivelPara'] = $sistemaDisponivel;
     $item['iconeDisponivelPara'] = $iconeDisponivel;
     $resultado[] = $item;
-    
-
   }
-   
-  if(count($resultado) > 0){
-    
+
+  if (count($resultado) > 0) {
+
     $totalCourse = count(getCountDowloads());
-    $resultado[0][] = ['totalPage' => $totalCourse / $perPage]; 
+    $totalPaginas = ceil($totalCourse / $perPage);
+    $resultado[0][] = ['totalPage' => $totalPaginas];
     $resultado[0][] = ['currentPage' => $page];
-  
-  } 
+  }
 
   return $resultado;
 }
 
 
-function getCountDowloadsSearch($value){
-  
-  require 'conection.php';
+function getCountDowloadsSearch($value) {
+
+  global $pdo;
   $sql = $pdo->prepare("SELECT * FROM dowloads WHERE title LIKE CONCAT('%', :value, '%') ORDER BY orderr");
-  $sql->bindValue(":value",$value);
+  $sql->bindValue(":value", $value);
   $sql->execute();
   $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
   return $lista;
-
-
 }
 
 
-function searchArchiveDowload($value,$page){
-  require 'conection.php';
-  $perPage = 5;
-  $dowloadsArchives = [];
-  $resultado = [];
-  $sql = $pdo->prepare("SELECT * FROM dowloads WHERE title LIKE CONCAT('%', :value, '%') ORDER BY orderr  LIMIT :page,:perPage");
-  $sql->bindValue(":page",$page,PDO::PARAM_INT);
-  $sql->bindValue(":perPage",$perPage,PDO::PARAM_INT);
-  $sql->bindValue(":value",$value);
-  $sql->execute();
-
-  $dowloadsArchives = $sql->fetchAll(PDO::FETCH_ASSOC);
-
-
+function searchArchiveDowload($value, $page) {
+  require 'vendor/autoload.php';
+   global $pdo;
+   // usando query builder
+   $h = new \ClanCats\Hydrahon\Builder('mysql', function ($query, $queryString, $queryParameters) use ($pdo) {
+    $statement = $pdo->prepare($queryString);
+    $statement->execute($queryParameters);
+    if ($query instanceof \ClanCats\Hydrahon\Query\Sql\FetchableInterface) {
+      return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
+  });
   
+  $perPage = 5;
+  $resultado = [];
+  $dowloads = $h->table('dowloads');
+  $dowloadsArchives = $dowloads->select()->where('title', 'like',"%$value%")->orderBy('orderr','desc')->page($page,$perPage)->get();
+ 
   foreach ($dowloadsArchives as $item) {
     $sistemaDisponivel = '';
     $iconeDisponivel;
     switch ($item['system']) {
-    case 'W':
-    $sistemaDisponivel = 'Disponivel para windows';
-    $iconeDisponivel = '<i class="fa-2x color-three fab fa-windows"></i>';
-    break;
-    case 'M':
-    $sistemaDisponivel = 'Disponivel para Mac';
-    $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
-    break;
-    case 'A':
-    $sistemaDisponivel = 'Disponivel para Android';
-    $iconeDisponivel = '<i class="fa-2x color-three fab fa-android"></i>';
-    break;
-    case 'I':
-    $sistemaDisponivel = 'Disponivel para Iphone';
-    $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
-    break;
-    case 'T':
-      $sistemaDisponivel = "Todos os sistemas";
-      $iconeDisponivel = "fa-2x color-three fa-globe-americas";
+      case 'W':
+        $sistemaDisponivel = 'Disponivel para windows';
+        $iconeDisponivel = '<i class="fa-2x color-three fab fa-windows"></i>';
+        break;
+      case 'M':
+        $sistemaDisponivel = 'Disponivel para Mac';
+        $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
+        break;
+      case 'A':
+        $sistemaDisponivel = 'Disponivel para Android';
+        $iconeDisponivel = '<i class="fa-2x color-three fab fa-android"></i>';
+        break;
+      case 'I':
+        $sistemaDisponivel = 'Disponivel para Iphone';
+        $iconeDisponivel = '<i class="fa-2x color-three fab fa-apple"></i>';
+        break;
+      case 'T':
+        $sistemaDisponivel = "Todos os sistemas";
+        $iconeDisponivel = "fa-2x color-three fa-globe-americas";
+    }
+
+    $item['disponivelPara'] = $sistemaDisponivel;
+    $item['iconeDisponivelPara'] = $iconeDisponivel;
+    $resultado[] = $item;
   }
-  
-  $item['disponivelPara'] = $sistemaDisponivel;
-  $item['iconeDisponivelPara'] = $iconeDisponivel;
-  $resultado[] = $item;
 
-} 
+  if (count($resultado) > 0) {
 
-if(count($resultado) > 0){
-    
-  $totalCourse = count(getCountDowloadsSearch($value));
-  $resultado[0][] = ['totalPage' => $totalCourse / $perPage]; 
-  $resultado[0][] = ['currentPage' => $page];
+    $totalCourse = count(getCountDowloadsSearch($value));
+    $resultado[0][] = ['totalPage' => ceil($totalCourse / $perPage)];
+    $resultado[0][] = ['currentPage' => $page];
+  }
 
-} 
-
-return $resultado; 
-
-
+  return $resultado;
 }
-
-
-

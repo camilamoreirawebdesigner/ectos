@@ -154,7 +154,7 @@ if($page){
                      </div> 
 
                      <?php if(count($dowloadsArchives) < 1): ?>
-                     <div style="height:200px;text-align:center;"> 
+                     <div class="notFoundArchives"> 
                         <h1> Registros não encontrados. </h1>
                      </div>
                     <?php endif; ?>

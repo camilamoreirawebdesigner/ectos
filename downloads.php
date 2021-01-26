@@ -148,14 +148,14 @@ if ($page) {
 
                     <div class="course-pagination mb-5">
                         <?php if (count($dowloadsArchives) > 0) : ?>
-                            <?php for ($q = 0; $q < $dowloadsArchives[0][0]['totalPage']; $q++) : ?>
-                                <a style="border-radius:4px;color:#fff;" class="<?= $dowloadsArchives[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="downloads.php?page=<?= $q; ?>"> <?= $q + 1; ?> </a>
+                            <?php for($q = 0; $q<$dowloadsArchives[0][0]['totalPage']; $q++): ?>
+                                <a class="<?= $dowloadsArchives[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="downloads.php?page=<?=$q?>"> <?= $q+1;?> </a>
                             <?php endfor; ?>
                         <?php endif; ?>
                     </div>
 
                     <?php if (count($dowloadsArchives) < 1) : ?>
-                        <div style="height:200px;text-align:center;">
+                        <div class="notFoundArchives">
                             <h1> Registros não encontrados. </h1>
                         </div>
                     <?php endif; ?>

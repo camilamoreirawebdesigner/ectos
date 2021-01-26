@@ -281,8 +281,10 @@ div.arquivo button {
     padding: 7px 10px;
     border:1px solid #01B6AD;
     margin:5px;
-    text-decoration: none;
+    text-decoration: none !important;
     color:#FFF;
+    border-radius:4px;
+    background-color:#01B6AD ;
 }
 
 .course-pagination a.active {
@@ -293,6 +295,8 @@ div.arquivo button {
 .course-pagination a:hover {
     background-color: #01756F;
     border:1px solid #01B6AD;
+    text-decoration: none;
+    color:#fff;
 }
 
 /* LOADING MODAL */
@@ -308,4 +312,10 @@ div.arquivo button {
 
 .loading-open {
     overflow: hidden;
+}
+
+/* ARQUIVOS NÃO ENCONTRADOS */ 
+.notFoundArchives {
+   height: 200px;
+   text-align:center;
 }
