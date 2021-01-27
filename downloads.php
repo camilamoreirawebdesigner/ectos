@@ -84,7 +84,7 @@ if ($page) {
                         <a class="nav-link" href="#servicos">SERVIÇOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">CURSOS</a>
+                        <a class="nav-link" href="cursos.php">CURSOS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="downloads.php">DOWNLOADS</a>
@@ -381,10 +381,8 @@ if ($page) {
 
     <!-- Link do Counter Up -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-    <script src="assets/libraries/counter-up/jquery.counterup.min.js"></script>
 
     <!-- Link do site -->
-    <script src="assets/js/contadores.js"></script>
     <script src="assets/js/botaoTopo.js"></script>
     <script src="assets/js/dowload.js"> </script>
 
