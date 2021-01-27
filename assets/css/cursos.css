@@ -193,10 +193,9 @@ a.nav-link:hover {
 
 }
 
-.cat-presencial {
+.cat-presencial, .cat-presencial:hover {
     text-decoration: none;
     color: #CCCCCC;
-    margin-right: 10px;
 }
 
 .cat-presencial span {
@@ -205,7 +204,7 @@ a.nav-link:hover {
     padding: 6px 10px;
 }
 
-.cat-online {
+.cat-online, .cat-online:hover {
     text-decoration: none;
     color: #CCCCCC;
 }
@@ -216,26 +215,52 @@ a.nav-link:hover {
     padding: 6px 8px;
 }
 
+.cat-todos, .cat-todos:hover {
+    text-decoration: none;
+    color: #CCCCCC;
+}
+
+.cat-todos span {
+    background-color: #333333;
+    color: #FFF;
+    padding: 6px 8px;
+}
+
 .course-item {
     border: 1px solid #01b6ad;
     padding: 0 !important;
     background-color: #F1F1F1;
 }
 
-.course-img span {
-    top: -10px;
-    position: relative;
+#indicators a {
+    margin-right: 10px;
 }
 
-.course-img span{
+.course-img span {
+    top: -10px;
     padding: 8px 12px;
+}
+
+.course-img {
+    height: 180px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
 .course-dsc {
     padding: 0 25px;
     margin-bottom: 2rem;
+    position: relative;
 }
 
 .d-grid button {
     font-weight: 500 !important;
+}
+
+.course-dsc .cat-presencial, .course-dsc .cat-online {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
 }

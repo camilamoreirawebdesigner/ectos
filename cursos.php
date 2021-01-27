@@ -119,20 +119,19 @@ if ($page) {
                 </div>
             </div>
             <div class="row">
-                <div class="col">
+                <div id="indicators" class="col">
                     <a href="#" class="cat-presencial"><span><i class="fas fa-user"></i></span> PRESENCIAL</a>
                     <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span> ONLINE</a>
+                    <a href="#" class="cat-todos"><span><i class="fas fa-chalkboard-teacher"></i></span> TODOS</a>
                 </div>
             </div>
             <div class="row mt-5">
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="course-item text-center">
-                        <div class="course-img">
-                            <img src="assets/img/img-01.jpg" class="img-fluid">
-                            <a href="#" class="cat-presencial"><span><i class="fas fa-user"></i></span></a>
-                        </div>
+                        <div class="course-img" style="background-image: url(assets/img/img-01.jpg)"></div>
                         <div class="course-dsc mt-2">
-                            <h5>Capacitação Executiva</h5>
+                            <a href="#" class="cat-presencial"><span><i class="fas fa-user"></i></span></a>
+                            <h5 class="mt-5">Capacitação Executiva</h5>
                             <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
                         </div>
                         <div class="d-grid">
@@ -142,12 +141,10 @@ if ($page) {
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="course-item text-center">
-                        <div class="course-img">
-                            <img src="assets/img/img-02.jpg" class="img-fluid">
-                            <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
-                        </div>
+                        <div class="course-img" style="background-image: url(assets/img/img-02.jpg)"></div>
                         <div class="course-dsc mt-2">
-                            <h5>Capacitação Executiva</h5>
+                            <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
+                            <h5 class="mt-5">Capacitação Executiva</h5>
                             <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
                         </div>
                         <div class="d-grid">
@@ -157,66 +154,17 @@ if ($page) {
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="course-item text-center">
-                        <div class="course-img">
-                            <img src="assets/img/img-03.jpg" class="img-fluid">
+                        <div class="course-img" style="background-image: url(assets/img/img-02.jpg)"></div>
+                        <div class="course-dsc mt-2">
                             <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
-                        </div>
-                        <div class="course-dsc mt-2">
-                            <h5>Capacitação Executiva</h5>
-                            <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-default btn-block" style="border-radius: 0 !important;">SABER MAIS</button>
-                        </div>
-                    </div>       
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="course-item text-center">
-                        <div class="course-img">
-                            <img src="assets/img/img-01.jpg" class="img-fluid">
-                            <a href="#" class="cat-presencial"><span><i class="fas fa-user"></i></span></a>
-                        </div>
-                        <div class="course-dsc mt-2">
-                            <h5>Capacitação Executiva</h5>
-                            <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-default btn-block" style="border-radius: 0 !important;">SOLICITAR ORÇAMENTO</button>
-                        </div>  
-                    </div>                                     
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="course-item text-center">
-                        <div class="course-img">
-                            <img src="assets/img/img-03.jpg" class="img-fluid">
-                            <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
-                        </div>
-                        <div class="course-dsc mt-2">
-                            <h5>Capacitação Executiva</h5>
+                            <h5 class="mt-5">Capacitação Executiva</h5>
                             <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
                         </div>
                         <div class="d-grid">
                             <button class="btn btn-default btn-block" style="border-radius: 0 !important;">SABER MAIS</button>
                         </div> 
                     </div>          
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="course-item text-center">
-                        <div class="course-img">
-                            <img src="assets/img/img-02.jpg" class="img-fluid">
-                            <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
-                        </div>
-                        <div class="course-dsc mt-2">
-                            <h5>Capacitação Executiva</h5>
-                            <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-default btn-block" style="border-radius: 0 !important;">SABER MAIS</button>
-                        </div>
-                    </div>       
-                </div>
+                </div>                
             </div>
            
         </div>
