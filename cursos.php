@@ -143,7 +143,7 @@ if ($page) {
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="course-item text-center">
                         <div class="course-img">
-                            <img src="assets/img/img-01.jpg" class="img-fluid">
+                            <img src="assets/img/img-02.jpg" class="img-fluid">
                             <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
                         </div>
                         <div class="course-dsc mt-2">
@@ -158,7 +158,7 @@ if ($page) {
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="course-item text-center">
                         <div class="course-img">
-                            <img src="assets/img/img-01.jpg" class="img-fluid">
+                            <img src="assets/img/img-03.jpg" class="img-fluid">
                             <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
                         </div>
                         <div class="course-dsc mt-2">
@@ -190,7 +190,7 @@ if ($page) {
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="course-item text-center">
                         <div class="course-img">
-                            <img src="assets/img/img-01.jpg" class="img-fluid">
+                            <img src="assets/img/img-03.jpg" class="img-fluid">
                             <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
                         </div>
                         <div class="course-dsc mt-2">
@@ -205,7 +205,7 @@ if ($page) {
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="course-item text-center">
                         <div class="course-img">
-                            <img src="assets/img/img-01.jpg" class="img-fluid">
+                            <img src="assets/img/img-02.jpg" class="img-fluid">
                             <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
                         </div>
                         <div class="course-dsc mt-2">
