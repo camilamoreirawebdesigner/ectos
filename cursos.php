@@ -1,11 +1,16 @@
 <?php
 require 'assets/includes/functions.php';
 $page = filter_input(INPUT_GET, 'page');
-if ($page) {
-    $dowloadsArchives = getDowloadsArchives($page);
+$value = filter_input(INPUT_GET, 'value');
+$categoria = filter_input(INPUT_GET, 'cat');
+$courses = [];
+if($value){
+    $courses = searchCourses($value,$page,$categoria);
 } else {
-    $dowloadsArchives = getDowloadsArchives(0);
+    $courses = getCourses($page,$categoria);
 }
+
+
 
 
 ?>
@@ -109,9 +114,9 @@ if ($page) {
             </div>
             <div class="row justify-content-md-center mb-5 mt-5">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <form action="search.php" method="GET">
+                    <form  method="GET">
                         <div class="input-group mb-3">
-                            <input type="text" name="arquivo" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo..." required>
+                            <input type="text" name="" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo..." required>
                             <span id="qtd-reg-filter" style="position: absolute; right: 0; top: 40px;">7 registros encontrados</span>
                             <button type="submit" class="input-group-text button-filter" style="text-decoration: none;" id="btnSearch"><i class="fas fa-search"></i></button>
                         </div>
@@ -120,56 +125,37 @@ if ($page) {
             </div>
             <div class="row">
                 <div id="indicators" class="col">
-                    <a href="#" class="cat-presencial"><span><i class="fas fa-user"></i></span> PRESENCIAL</a>
-                    <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span> ONLINE</a>
-                    <a href="#" class="cat-todos"><span><i class="fas fa-chalkboard-teacher"></i></span> TODOS</a>
+                    <a href="cursos.php?cat=1" class="cat-presencial"><span><i class="fas fa-user"></i></span> PRESENCIAL</a>
+                    <a href="cursos.php?cat=2" class="cat-online"><span><i class="fas fa-desktop"></i></span> ONLINE</a>
+                    <a href="cursos.php?cat=0" class="cat-todos"><span><i class="fas fa-chalkboard-teacher"></i></span> TODOS</a>
                 </div>
             </div>
             <div class="row mt-5">
+                <?php foreach($courses as $course): ?>
                 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                     <div class="course-item text-center">
-                        <div class="course-img" style="background-image: url(assets/img/img-01.jpg)"></div>
+                        <div class="course-img" style="background-image: url(<?=$course['image'];?>);"></div>
                         <div class="course-dsc mt-2">
-                            <a href="#" class="cat-presencial"><span><i class="fas fa-user"></i></span></a>
-                            <h5 class="mt-5">Capacitação Executiva</h5>
-                            <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
+                            <a href="#" class="<?=$course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online';?>"><span><i class="fas fa-user"></i></span></a>
+                            <h5 class="mt-5"><?=$course['title'];?></h5>
+                            <h6 class="fw-400"><?=mb_substr($course['description'],0,100);?></h6>
                         </div>
                         <div class="d-grid">
-                            <button class="btn btn-default btn-block" style="border-radius: 0 !important;">SOLICITAR ORÇAMENTO</button>
+                            <button class="btn btn-default btn-block" style="border-radius: 0 !important;"><?=$course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS';?></button>
                         </div>  
                     </div>                                     
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="course-item text-center">
-                        <div class="course-img" style="background-image: url(assets/img/img-02.jpg)"></div>
-                        <div class="course-dsc mt-2">
-                            <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
-                            <h5 class="mt-5">Capacitação Executiva</h5>
-                            <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-default btn-block" style="border-radius: 0 !important;">SABER MAIS</button>
-                        </div> 
-                    </div>          
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="course-item text-center">
-                        <div class="course-img" style="background-image: url(assets/img/img-02.jpg)"></div>
-                        <div class="course-dsc mt-2">
-                            <a href="#" class="cat-online"><span><i class="fas fa-desktop"></i></span></a>
-                            <h5 class="mt-5">Capacitação Executiva</h5>
-                            <h6 class="fw-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit adipisci possimus modi quo, animi et cupiditate obcaecati sunt doloribus illo quaerat tempore, nobis atque hic? Molestiae rerum voluptatum delectus rem.</h6>
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-default btn-block" style="border-radius: 0 !important;">SABER MAIS</button>
-                        </div> 
-                    </div>          
-                </div>                
-            </div>
-           
-        </div>
+                <?php endforeach; ?>   
 
-       
+                 <div class="course-pagination mb-5">
+                        <?php if (count($courses) > 0) : ?>
+                            <?php for($q = 0; $q<$courses[0][0]['totalPage']; $q++): ?>
+                                <a class="<?= $courses[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="downloads.php?page=<?=$q?>"> <?= $q+1;?> </a>
+                            <?php endfor; ?>
+                        <?php endif; ?>
+                    </div>  
+            </div>
+        </div>
     </div>
 
     <div class="container-fluid">

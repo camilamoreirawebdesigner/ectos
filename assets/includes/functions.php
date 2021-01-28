@@ -16,17 +16,59 @@ function getServices() {
   return $lista;
 }
 
-function getCourses() {
 
+function getCountCourses(){
   global $pdo;
-  $sql = $pdo->query("SELECT * FROM courses ORDER BY ordernacao");
+  $sql = $pdo->query("SELECT * FROM courses ORDER BY orderr");
   $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
-  return $lista;
+  return count($lista);
 }
+
+function getCourses($page = 0,$cat = 0) {
+  require 'vendor/autoload.php';
+  global $pdo;
+  $perPage = 6;
+
+   // usando query builder
+   $h = new \ClanCats\Hydrahon\Builder('mysql', function ($query, $queryString, $queryParameters) use ($pdo) {
+    $statement = $pdo->prepare($queryString);
+    $statement->execute($queryParameters);
+    if ($query instanceof \ClanCats\Hydrahon\Query\Sql\FetchableInterface) {
+      return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
+  });
+   
+  $courseTable = $h->table('courses'); 
+  $courses = [];
+
+  if($cat == 0){
+    $courses = $courseTable->select()->orderBy('orderr','desc')->page($page,$perPage)->get();
+  } else {
+    $courses = $courseTable->select()->where('courses_categories_id',$cat)->orderBy('orderr','desc')->page($page,$perPage)->get();
+  }
+
+  $coursesTot = [];
+  foreach($courses as $course){
+     $course['image'] = 'data:image/jpg;base64,'.base64_encode($course['image']);
+     $coursesTot[] = $course;
+  }
+  
+  if (count($coursesTot) > 0) {
+    $totalCourse = getCountCourses();
+    $totalPaginas = ceil($totalCourse / $perPage);
+    $coursesTot[0][] = ['totalPage' => $totalPaginas];
+    $coursesTot[0][] = ['currentPage' => $page];
+  }
+
+  return $coursesTot;
+} 
+
 
 function getCountDowloads() {
 
   global $pdo;
+ 
+
   $sql = $pdo->query("SELECT * FROM dowloads ORDER BY orderr");
   $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
   return $lista;
@@ -102,6 +144,24 @@ function getCountDowloadsSearch($value) {
   $sql->execute();
   $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
   return $lista;
+}
+
+function searchCourses($value,$page,$cat){
+  require 'vendor/autoload.php';
+  global $pdo;
+
+   // usando query builder
+   $h = new \ClanCats\Hydrahon\Builder('mysql', function ($query, $queryString, $queryParameters) use ($pdo) {
+    $statement = $pdo->prepare($queryString);
+    $statement->execute($queryParameters);
+    if ($query instanceof \ClanCats\Hydrahon\Query\Sql\FetchableInterface) {
+      return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
+  });
+
+
+
+
 }
 
 

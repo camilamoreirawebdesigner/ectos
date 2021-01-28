@@ -187,6 +187,9 @@ a.nav-link:hover {
         display: flex;
         margin-top: 20px;
     }
+    .course-item {
+        margin-bottom: 50px;
+    }
 }
 
 @media screen and (max-width: 992px) and (min-width: 768px) { /* grid md*/
@@ -252,6 +255,7 @@ a.nav-link:hover {
     padding: 0 25px;
     margin-bottom: 2rem;
     position: relative;
+    word-wrap: break-word;
 }
 
 .d-grid button {
@@ -263,4 +267,32 @@ a.nav-link:hover {
     top: -60px;
     left: 0;
     right: 0;
+}
+
+.course-dsc .cat-presencial span, .course-dsc .cat-online span {
+    padding: 15px 20px;
+}
+
+/* PAGINAÇÃO */
+.course-pagination a {
+    display: inline-block;
+    padding: 7px 10px;
+    border:1px solid #01B6AD;
+    margin:5px;
+    text-decoration: none !important;
+    color:#FFF;
+    border-radius:4px;
+    background-color:#01B6AD ;
+}
+
+.course-pagination a.active {
+    background-color: #01756F;
+    border:1px solid #01B6AD;
+}
+
+.course-pagination a:hover {
+    background-color: #01756F;
+    border:1px solid #01B6AD;
+    text-decoration: none;
+    color:#fff;
 }
