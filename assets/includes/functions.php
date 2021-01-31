@@ -17,10 +17,21 @@ function getServices() {
 }
 
 
-function getCountCourses(){
+function getCountCourses($cat = 0){
   global $pdo;
-  $sql = $pdo->query("SELECT * FROM courses ORDER BY orderr");
-  $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+  
+  $sql = "";
+  $lista = [];
+  if($cat != 0){
+    $sql = $pdo->prepare("SELECT * FROM courses WHERE courses_categories_id = :categoria ORDER BY orderr");
+    $sql->bindValue(":categoria",$cat,PDO::PARAM_INT);
+    $sql->execute();
+    $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+  } else {
+    $sql = $pdo->query("SELECT * FROM courses  ORDER BY orderr");
+    $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   return count($lista);
 }
 
@@ -54,12 +65,13 @@ function getCourses($page = 0,$cat = 0) {
   }
   
   if (count($coursesTot) > 0) {
-    $totalCourse = getCountCourses();
+    $totalCourse = getCountCourses($cat);
     $totalPaginas = ceil($totalCourse / $perPage);
     $coursesTot[0][] = ['totalPage' => $totalPaginas];
     $coursesTot[0][] = ['currentPage' => $page];
   }
-
+  
+  
   return $coursesTot;
 } 
 
@@ -146,10 +158,11 @@ function getCountDowloadsSearch($value) {
   return $lista;
 }
 
-function searchCourses($value,$page,$cat){
+function searchCourses($value,$page = 0,$cat = 0){
   require 'vendor/autoload.php';
   global $pdo;
-
+  
+   $perPage = 5;
    // usando query builder
    $h = new \ClanCats\Hydrahon\Builder('mysql', function ($query, $queryString, $queryParameters) use ($pdo) {
     $statement = $pdo->prepare($queryString);
@@ -159,9 +172,30 @@ function searchCourses($value,$page,$cat){
     }
   });
 
+  $courseTable = $h->table('courses'); 
+  $courses = [];
 
+  if($cat == 0){
+    $courses = $courseTable->select()->where('title','like',"%$value%")->orderBy('orderr','desc')->page($page,$perPage)->get();
+  } else {
+    $courses = $courseTable->select()->where('courses_categories_id',$cat)->where('title',$value)->orderBy('orderr','desc')->page($page,$perPage)->get();
+  }
 
-
+  $coursesTot = [];
+  foreach($courses as $course){
+     $course['image'] = 'data:image/jpg;base64,'.base64_encode($course['image']);
+     $coursesTot[] = $course;
+  }
+  
+  if (count($coursesTot) > 0) {
+    $totalCourse = getCountCourses();
+    $totalPaginas = ceil($totalCourse / $perPage);
+    $coursesTot[0][] = ['totalPage' => $totalPaginas];
+    $coursesTot[0][] = ['currentPage' => $page];
+  }
+  
+   
+  return $coursesTot;
 }
 
 

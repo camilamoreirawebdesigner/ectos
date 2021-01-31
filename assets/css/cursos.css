@@ -296,3 +296,7 @@ a.nav-link:hover {
     text-decoration: none;
     color:#fff;
 }
+
+.notFoundCourses {
+    text-align: center !important;
+}

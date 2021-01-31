@@ -10,9 +10,6 @@ if($value){
     $courses = getCourses($page,$categoria);
 }
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -114,9 +111,11 @@ if($value){
             </div>
             <div class="row justify-content-md-center mb-5 mt-5">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <form  method="GET">
+                    <form  method="GET" action="cursos.php?page=1">
                         <div class="input-group mb-3">
-                            <input type="text" name="" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo..." required>
+                            <input type="text" name="value" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo..." required>
+                            <input type="text" name="page" value="<?=$page;?>"      style="display:none;"/>
+                            <input type="text" name="cat" value="<?=$categoria;?>"  style="display:none;"/>
                             <span id="qtd-reg-filter" style="position: absolute; right: 0; top: 40px;">7 registros encontrados</span>
                             <button type="submit" class="input-group-text button-filter" style="text-decoration: none;" id="btnSearch"><i class="fas fa-search"></i></button>
                         </div>
@@ -146,6 +145,12 @@ if($value){
                     </div>                                     
                 </div>
                 <?php endforeach; ?>   
+
+                   <?php if (count($courses) < 1) : ?>
+                        <div class="notFoundCourses" style="text-align:center;">
+                            <h1> Registros não encontrados. </h1>
+                        </div>
+                    <?php endif; ?>   
 
                  <div class="course-pagination mb-5">
                         <?php if (count($courses) > 0) : ?>
