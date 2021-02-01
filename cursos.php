@@ -136,11 +136,10 @@ if ($value) {
                     <a href="cursos.php?cat=0" class="cat-todos"><span><i class="fas fa-chalkboard-teacher"></i></span> TODOS</a>
                 </div>
             </div>
-            
             <?php $contador = 3;?>
             <?php foreach ($courses as $course) : ?>
                <?php if($contador == 3):?>
-                <div class="row mt-5 teste">
+                <div class="row mt-5">
                     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                         <div class="course-item text-center">
                             <div class="course-img" style="background-image: url(<?= $course['image']; ?>);"></div>
@@ -168,6 +167,9 @@ if ($value) {
                             </div>
                         </div>
                     </div>
+                    <?php if($contador == 2):?>
+                        </div>
+                    <?php endif;?>
                 <?php endif;?>
                 <?php $contador == 3 ? $contador = 0 : $contador = $contador;?>
                 <?php $contador++;?>
