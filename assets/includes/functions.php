@@ -31,7 +31,8 @@ function getCountCourses($cat = 0){
     $sql = $pdo->query("SELECT * FROM courses  ORDER BY orderr");
     $lista = $sql->fetchAll(PDO::FETCH_ASSOC);
   }
-
+  
+ 
   return count($lista);
 }
 
@@ -70,8 +71,6 @@ function getCourses($page = 0,$cat = 0) {
     $coursesTot[0][] = ['totalPage' => $totalPaginas];
     $coursesTot[0][] = ['currentPage' => $page];
   }
-  
-  
   return $coursesTot;
 } 
 
@@ -162,7 +161,7 @@ function searchCourses($value,$page = 0,$cat = 0){
   require 'vendor/autoload.php';
   global $pdo;
   
-   $perPage = 5;
+   $perPage = 6;
    // usando query builder
    $h = new \ClanCats\Hydrahon\Builder('mysql', function ($query, $queryString, $queryParameters) use ($pdo) {
     $statement = $pdo->prepare($queryString);
@@ -175,10 +174,14 @@ function searchCourses($value,$page = 0,$cat = 0){
   $courseTable = $h->table('courses'); 
   $courses = [];
 
+  $coursesCount = 0;
+
   if($cat == 0){
     $courses = $courseTable->select()->where('title','like',"%$value%")->orderBy('orderr','desc')->page($page,$perPage)->get();
+    $coursesCount =  $courseTable->select()->where('title','like',"%$value%")->orderBy('orderr','desc')->get();
   } else {
-    $courses = $courseTable->select()->where('courses_categories_id',$cat)->where('title',$value)->orderBy('orderr','desc')->page($page,$perPage)->get();
+    $courses = $courseTable->select()->where('courses_categories_id',$cat)->where('title','like',"%$value%")->orderBy('orderr','desc')->page($page,$perPage)->get();
+    $coursesCount = $courseTable->select()->where('courses_categories_id',$cat)->where('title','like',"%$value%")->orderBy('orderr','desc')->get();
   }
 
   $coursesTot = [];
@@ -188,7 +191,7 @@ function searchCourses($value,$page = 0,$cat = 0){
   }
   
   if (count($coursesTot) > 0) {
-    $totalCourse = getCountCourses();
+    $totalCourse = count($coursesCount);
     $totalPaginas = ceil($totalCourse / $perPage);
     $coursesTot[0][] = ['totalPage' => $totalPaginas];
     $coursesTot[0][] = ['currentPage' => $page];

@@ -4,10 +4,10 @@ $page = filter_input(INPUT_GET, 'page');
 $value = filter_input(INPUT_GET, 'value');
 $categoria = filter_input(INPUT_GET, 'cat');
 $courses = [];
-if($value){
-    $courses = searchCourses($value,$page,$categoria);
+if ($value) {
+    $courses = searchCourses($value, $page, $categoria);
 } else {
-    $courses = getCourses($page,$categoria);
+    $courses = getCourses($page, $categoria);
 }
 
 ?>
@@ -111,12 +111,19 @@ if($value){
             </div>
             <div class="row justify-content-md-center mb-5 mt-5">
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                    <form  method="GET" action="cursos.php?page=1">
+                    <form method="GET" action="cursos.php?page=1">
                         <div class="input-group mb-3">
-                            <input type="text" name="value" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo..." required> 
-                            <input type="text" name="page" value="<?=$page;?>"      style="display:none;"/>
-                            <input type="text" name="cat" value="<?=$categoria;?>"  style="display:none;"/>
-                            <span id="qtd-reg-filter" style="position: absolute; right: 0; top: 40px;">7 registros encontrados</span>
+                            <input type="text" name="value" value="<?=$value;?>" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo...">
+                            <input type="text" name="cat" value="<?= $categoria; ?>" style="display:none;" />
+                            <span id="qtd-reg-filter" style="position: absolute; right: 0; top: 40px;">
+                                <?php
+                                if (count($courses) > 1) {
+                                    echo count($courses) . ' registros';
+                                } else {
+                                    echo count($courses) . ' registro';
+                                }
+                                ?>
+                            </span>
                             <button type="submit" class="input-group-text button-filter" style="text-decoration: none;" id="btnSearch"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
@@ -129,38 +136,59 @@ if($value){
                     <a href="cursos.php?cat=0" class="cat-todos"><span><i class="fas fa-chalkboard-teacher"></i></span> TODOS</a>
                 </div>
             </div>
-            <div class="row mt-5">
-                <?php foreach($courses as $course): ?>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="course-item text-center">
-                        <div class="course-img" style="background-image: url(<?=$course['image'];?>);"></div>
-                        <div class="course-dsc mt-2">
-                            <a href="#" class="<?=$course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online';?>"><span><i class="fas fa-user"></i></span></a>
-                            <h5 class="mt-5"><?=$course['title'];?></h5>
-                            <h6 class="fw-400"><?=mb_substr($course['description'],0,200).'...';?></h6>
+            
+            <?php $contador = 3;?>
+            <?php foreach ($courses as $course) : ?>
+               <?php if($contador == 3):?>
+                <div class="row mt-5 teste">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="course-item text-center">
+                            <div class="course-img" style="background-image: url(<?= $course['image']; ?>);"></div>
+                            <div class="course-dsc mt-2">
+                                <a href="#" class="<?= $course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online'; ?>"><span><i class="fas fa-user"></i></span></a>
+                                <h5 class="mt-5"><?= $course['title']; ?></h5>
+                                <h6 class="fw-400"><?= mb_substr($course['description'], 0, 200) . '...'; ?></h6>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-default btn-block" style="border-radius: 0 !important;"><?= $course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS'; ?></button>
+                            </div>
                         </div>
-                        <div class="d-grid">
-                            <button class="btn btn-default btn-block" style="border-radius: 0 !important;"><?=$course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS';?></button>
-                        </div>  
-                    </div>                                     
+                    </div>
+                <?php else:?>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <div class="course-item text-center">
+                            <div class="course-img" style="background-image: url(<?= $course['image']; ?>);"></div>
+                            <div class="course-dsc mt-2">
+                                <a href="#" class="<?= $course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online'; ?>"><span><i class="fas fa-user"></i></span></a>
+                                <h5 class="mt-5"><?= $course['title']; ?></h5>
+                                <h6 class="fw-400"><?= mb_substr($course['description'], 0, 200) . '...'; ?></h6>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-default btn-block" style="border-radius: 0 !important;"><?= $course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS'; ?></button>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif;?>
+                <?php $contador == 3 ? $contador = 0 : $contador = $contador;?>
+                <?php $contador++;?>
+            <?php endforeach; ?>
+
+
+            <?php if (count($courses) < 1) : ?>
+                <div class="notFoundCourses" style="text-align:center;">
+                    <h1> Registros não encontrados. </h1>
                 </div>
-                <?php endforeach; ?>   
+            <?php endif; ?>
 
-                   <?php if (count($courses) < 1) : ?>
-                        <div class="notFoundCourses" style="text-align:center;">
-                            <h1> Registros não encontrados. </h1>
-                        </div>
-                    <?php endif; ?>   
-
-                 <div class="course-pagination mb-5">
-                        <?php if (count($courses) > 0) : ?>
-                            <?php for($q = 0; $q<$courses[0][0]['totalPage']; $q++): ?>
-                                <a class="<?= $courses[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="downloads.php?page=<?=$q?>"> <?= $q+1;?> </a>
-                            <?php endfor; ?>
-                        <?php endif; ?>
-                    </div>  
+            <div class="course-pagination mb-5">
+                <?php if (count($courses) > 0) : ?>
+                    <?php for ($q = 0; $q < $courses[0][0]['totalPage']; $q++) : ?>
+                        <a class="<?= $courses[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="cursos.php?cat=<?=$categoria;?>&page=<?= $q ?>&value=<?=$value;?>"> <?= $q + 1; ?> </a>
+                    <?php endfor; ?>
+                <?php endif; ?>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="container-fluid">
