@@ -113,7 +113,7 @@ if($value){
                 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                     <form  method="GET" action="cursos.php?page=1">
                         <div class="input-group mb-3">
-                            <input type="text" name="value" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo..." required>
+                            <input type="text" name="value" class="form-control" placeholder="Busque um arquivo..." aria-label="Busque um arquivo..." required> 
                             <input type="text" name="page" value="<?=$page;?>"      style="display:none;"/>
                             <input type="text" name="cat" value="<?=$categoria;?>"  style="display:none;"/>
                             <span id="qtd-reg-filter" style="position: absolute; right: 0; top: 40px;">7 registros encontrados</span>
@@ -137,7 +137,7 @@ if($value){
                         <div class="course-dsc mt-2">
                             <a href="#" class="<?=$course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online';?>"><span><i class="fas fa-user"></i></span></a>
                             <h5 class="mt-5"><?=$course['title'];?></h5>
-                            <h6 class="fw-400"><?=mb_substr($course['description'],0,100);?></h6>
+                            <h6 class="fw-400"><?=mb_substr($course['description'],0,200).'...';?></h6>
                         </div>
                         <div class="d-grid">
                             <button class="btn btn-default btn-block" style="border-radius: 0 !important;"><?=$course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS';?></button>

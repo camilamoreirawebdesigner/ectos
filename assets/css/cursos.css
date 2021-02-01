@@ -256,6 +256,7 @@ a.nav-link:hover {
     margin-bottom: 2rem;
     position: relative;
     word-wrap: break-word;
+    height: 120px;
 }
 
 .d-grid button {
