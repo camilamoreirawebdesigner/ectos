@@ -140,7 +140,7 @@ if ($value) {
             <?php foreach ($courses as $course) : ?>
                <?php if($contador == 3):?>
                 <div class="row mt-5">
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 curso">
                         <div class="course-item text-center">
                             <div class="course-img" style="background-image: url(<?= $course['image']; ?>);"></div>
                             <div class="course-dsc mt-2">
@@ -154,7 +154,7 @@ if ($value) {
                         </div>
                     </div>
                 <?php else:?>
-                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 curso">
                         <div class="course-item text-center">
                             <div class="course-img" style="background-image: url(<?= $course['image']; ?>);"></div>
                             <div class="course-dsc mt-2">
