@@ -1,0 +1,235 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif !important;
+}
+
+.oculta {
+    display: none;
+}
+
+.line {
+    width: 20%;
+    color: #01B6AD;
+    height: 2px !important;
+}
+
+.color-one {
+    color: #01756f;
+}
+
+.color-two {
+    color: #029c94;
+}
+
+.color-three {
+    color: #01b6ad;
+}
+
+.bg-one {
+    background-color: #01756F;
+}
+
+.bg-two {
+    background-color: #029C94;
+}
+
+.bg-three {
+    background-color: #01B6AD;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.required {
+    color: #f44336;
+}
+
+.order-xs-1 {
+    order: 1!important;
+}
+
+.order-xs-2 {
+    order: 2!important;
+}
+
+/* TOP MENU */
+#top-menu {
+    background-color: #000;
+    padding: 10px;
+    border-bottom: 1px solid #01B6AD;
+}
+
+#top-menu span a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#top-menu span a:hover {
+    color: #01B6AD;
+}
+
+#top-menu span:first-child {
+    margin-right: 15px;
+}
+
+/* NAVBAR */
+nav.navbar {
+    background-color: #000 !important;
+    opacity: .8;
+    border-bottom: 3px solid #01B6AD;
+    position: inherit !important;
+    top: 45px;
+    width: 100%;
+}
+a.nav-link {
+    color: #FFF !important;
+    font-size: 14px !important;
+}
+
+a.nav-link:hover {
+    color: #01B6AD !important;
+}
+
+.form-control:focus {
+    border-color: #cccccc !important;
+    box-shadow: none !important;
+}
+
+.button-filter:hover {
+    cursor: pointer;
+}
+
+/* CONTATO */
+.btn-default {
+    color: #fff !important;;
+    background-color: #01B6AD !important;
+    border-color: #01B6AD !important;
+    font-weight: 300 !important;
+}
+
+.btn-default:hover {
+    color: #fff !important;;
+    background-color: #029c94 !important;
+    border-color: #029c94 !important;
+    font-weight: 300 !important;
+}
+
+#contato-redes {
+    margin-top: 135px;
+}
+
+/* RODAPÉ */
+#rodape {
+    background-color: #000;
+    padding: 20px 50px;
+    border-top: 1px solid #01B6AD;
+    color: #FFF;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#rodape a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+/* VOLTAR AO TOPO */
+#goTop {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    display: none;
+}
+
+#goTop a {
+    color: #01756f;
+}
+
+/* MOBILE */
+@media screen and (max-width: 576px) { /* grid xs*/
+    #contato-redes {
+        margin-top: 0px;
+    }
+    #rodape div {
+        text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 576px) { /* grid sm*/
+    #contato-redes {
+        margin-top: 0px;
+    }
+    #rodape div {
+        text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 1196px) and (min-width: 992px) { /* grid md*/
+
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px) { /* grid md*/
+
+}
+
+#detalhes-curso {
+    margin-bottom: 10rem!important;
+    padding: 0;
+}
+
+div#header-img {
+    background-image: url(../img/bg.png);
+    min-height: 400px;
+    background-position: top;
+    background-repeat: repeat;
+}
+
+#name-course {
+    text-align: center;
+    width: 300px;
+    background-color: #01B6AD;
+    margin: 0 auto;
+    padding: 12px;
+    color: #fff;
+    font-size: 18px;
+    height: 50px;
+    margin-top: -50px;
+}
+
+#detalhes-curso .item-icon {
+    float: left;
+    padding: 20px;
+}
+
+#detalhes-curso .item-desc {
+    float: left;
+    padding: 20px;
+}
+
+#tbl-mod {
+    padding: 20px;
+}
+
+#tbl-mod table tr {
+    border-left: 2px solid #01b6ad;
+    color: #9e9e9e;
+}
+
+#box-comprar, #form-orcamento {
+    padding: 20px;
+}
