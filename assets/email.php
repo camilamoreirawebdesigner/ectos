@@ -29,6 +29,20 @@ switch ($tipoEmail) {
 
         $emailDestinatario = 'contato@camilamoreira.com.br';
     break;    
+
+    case 3:
+        $nome = filter_input(INPUT_POST, 'nome');
+        $whatsaap = filter_input(INPUT_POST, 'whats');    
+        $email = filter_input(INPUT_POST, 'email');
+        $quantidade = filter_input(INPUT_POST,'qtd');
+        $curso =  filter_input(INPUT_POST,'curso');
+
+        $assunto = utf8_decode("Solicitação de compra curso");
+        $mensagem = "Solicitação de compra para curso: <br><br> Email: ".$email." <br> WhatsApp: ".$whatsaap." <br> Nome do curso: ".$curso." <br> Quantidade: ".$quantidade;
+
+        $emailDestinatario = 'contato@camilamoreira.com.br';
+    break;
+
 }
 
 

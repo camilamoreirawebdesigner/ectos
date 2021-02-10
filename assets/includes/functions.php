@@ -75,6 +75,42 @@ function getCourses($page = 0,$cat = 0) {
 } 
 
 
+function getCourseDetalhe($idCurso){
+  
+  require 'vendor/autoload.php';
+  global $pdo;
+
+   // usando query builder
+   $h = new \ClanCats\Hydrahon\Builder('mysql', function ($query, $queryString, $queryParameters) use ($pdo) {
+    $statement = $pdo->prepare($queryString);
+    $statement->execute($queryParameters);
+    if ($query instanceof \ClanCats\Hydrahon\Query\Sql\FetchableInterface) {
+      return $statement->fetchAll(\PDO::FETCH_ASSOC);
+    }
+  });
+   
+  //PEGANDO O CURSO 
+  $courseTable = $h->table('courses'); 
+  $course = $courseTable->select()->where('id',$idCurso)->execute();
+  
+  //PEGANDO OS MODULOS DO CURSO
+  $modulesTable = $h->table('modules_courses'); 
+  $modules = $modulesTable->select()->where('courses_id',$idCurso)->orderBy('order','desc')->execute();
+  
+  //PEGANDO CONTEUDO PROGRAMATICO 
+  $conteudoTable = $h->table('content_courses'); 
+  $conteudo = $conteudoTable->select()->where('id_course',$idCurso)->execute();
+
+  return [
+    'curso' => $course,
+    'modulos' => $modules,
+    'conteudo' =>  $conteudo
+  ];
+
+
+}
+
+
 function getCountDowloads() {
 
   global $pdo;

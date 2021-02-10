@@ -149,7 +149,7 @@ if ($value) {
                                 <h6 class="fw-400"><?= mb_substr($course['description'], 0, 200) . '...'; ?></h6>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-default btn-block" style="border-radius: 0 !important;"><?= $course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS'; ?></button>
+                                <a href="detalhes.php?idCurso=<?=$course['id'];?>&cat=<?=$course['courses_categories_id'];?>" class="btn btn-default btn-block" style="border-radius: 0 !important;"><?= $course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS'; ?></a>
                             </div>
                         </div>
                     </div>
@@ -163,7 +163,7 @@ if ($value) {
                                 <h6 class="fw-400"><?= mb_substr($course['description'], 0, 200) . '...'; ?></h6>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-default btn-block" style="border-radius: 0 !important;"><?= $course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS'; ?></button>
+                                <a href="detalhes.php?idCurso=<?=$course['id'];?>&cat=<?=$course['courses_categories_id'];?>" class="btn btn-default btn-block" style="border-radius: 0 !important;"><?= $course['courses_categories_id'] == 1 ? 'SOLICITAR ORÇAMENTO' : 'SABER MAIS'; ?> </a>
                             </div>
                         </div>
                     </div>
