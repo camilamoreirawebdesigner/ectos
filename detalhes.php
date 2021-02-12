@@ -74,19 +74,19 @@ $detalheCourse = getCourseDetalhe($idCurso);
                         <a class="nav-link active" aria-current="page" href="index.php">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#quem-somos">QUEM SOMOS</a>
+                        <a class="nav-link" href="index.php">QUEM SOMOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#servicos">SERVIÇOS</a>
+                        <a class="nav-link" href="index.php">SERVIÇOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="cursos.php">CURSOS</a>
+                        <a class="nav-link" href="index.php">CURSOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="downloads.php">DOWNLOADS</a>
+                        <a class="nav-link" href="index.php">DOWNLOADS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contato">CONTATO</a>
+                        <a class="nav-link" href="index.php">CONTATO</a>
                     </li>
                 </ul>
             </div>
@@ -122,7 +122,7 @@ $detalheCourse = getCourseDetalhe($idCurso);
                     </div>
                     <div class="item-desc">
                         <h5>Carga Horária</h5>
-                        <h6 class="fw-300"><?= $detalheCourse['curso'][0]['hours']; ?></h6>
+                        <h6 class="fw-300"><?= $detalheCourse['curso'][0]['hours']; ?> h</h6>
                     </div>
                 </div>
             </div>
@@ -141,108 +141,113 @@ $detalheCourse = getCourseDetalhe($idCurso);
                     </div>
                 </div>
             </div>
-            <?php $contador = 3;?>
+            <?php $contador = 3; ?>
             <?php foreach ($detalheCourse['conteudo'] as $conteudo) : ?>
-                <?php if($contador == 3):?>
+                <?php if ($contador == 3) : ?>
                     <div class="row">
-                      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="item-icon">
-                        <i class="fas fa-check fa-2x color-three"></i>
-                    </div>
-                    <div class="item-desc">
-                        <h6 class="fw-300"><?=$conteudo['description'];?></h6>
-                    </div>
-                </div>
-            <?php else:?>
-                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                    <div class="item-icon">
-                        <i class="fas fa-check fa-2x color-three"></i>
-                    </div>
-                    <div class="item-desc">
-                        <h6 class="fw-300"><?=$conteudo['description'];?></h6>
-                    </div>
-                  </div>  
-                    <?php if($contador == 2):?>
-                        </div>    
-                   <?php endif;?> 
-             <?php endif;?>   
-             <?php $contador == 3 ? $contador = 0 : $contador = $contador;?>
-            <?php $contador++;?>   
-            <?php endforeach;?>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="item-desc">
-                        <h5>Módulos</h5>
-                    </div>
-                </div>
-            </div>
-            <div id="tbl-mod" class="row">
-                <div class="col">
-                    <?php $contador = 0; ?>
-                    <?php foreach ($detalheCourse['modulos'] as $modulo) : ?>
-                        <?php $contador++; ?>
-                        <table class="table table-bordered">
-                            <tr>
-                                <td><strong><?= $contador; ?>.</strong><?= $modulo['description']; ?></td>
-                                <td class="text-center" style="width: 100px;"><?= $modulo['hours']; ?> h</td>
-                            </tr>
-                        </table>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <div class="row" style="display:<?= $categoria != 1 ? 'none;' : 'flex;'; ?>">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="item-desc">
-                        <h5 class="fw-700">Preencha seus dados para receber informações de orçamento:</h5>
-                    </div>
-                </div>
-            </div>
-            <div id="form-orcamento" style="display:<?= $categoria != 1 ? 'none;' : 'block;'; ?>">
-                <!-- MENSAGENS DE ALERTA -->
-                <div class="alert alert-success alert-dismissible fade show oculta" role="alert">
-                    <strong>Oba!</strong> Recebemos o seu email de solicitação do curso, assim que possível retornamos o contato.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-                <div class="alert alert-danger alert-dismissible fade show oculta" role="alert">
-                    <strong>Ops!</strong> Não conseguimos receber o seu email, tente novamente mais tarde.
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-
-
-                <form action="">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-                            <label for="" class="form-label">Nome completo:</label>
-                            <input type="text" class="form-control" id="nome">
-                        </div>
                         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                            <label for="" class="form-label">Whatsapp:</label>
-                            <input type="text" class="form-control" id="whatsapp" placeholder="(DDD) 0000-0000">
+                            <div class="item-icon">
+                                <i class="fas fa-check fa-2x color-three"></i>
+                            </div>
+                            <div class="item-desc">
+                                <h6 class="fw-300"><?= $conteudo['description']; ?></h6>
+                            </div>
                         </div>
+                    <?php else : ?>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                            <div class="item-icon">
+                                <i class="fas fa-check fa-2x color-three"></i>
+                            </div>
+                            <div class="item-desc">
+                                <h6 class="fw-300"><?= $conteudo['description']; ?></h6>
+                            </div>
+                        </div>
+                        <?php if ($contador == 2) : ?>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
-                            <label for="" class="form-label">Email:</label>
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                            <label for="" class="form-label">Qtd.:</label>
-                            <input type="text" class="form-control" id="qtd">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div id="box-comprar" class="row">
-                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 d-grid">
-                    <button type="button" id="btnComprar" class="btn btn-default" style="display:<?= $categoria == 2 ? 'block;' : 'none;'; ?>">
-                        <i class="fas fa-cart-plus"></i> COMPRAR
-                    </button>
-                    <button type="button" data-curso='<?= $detalheCourse['curso'][0]['title']; ?>' id="btnSolicitar" class="btn btn-default" style="display:<?= $categoria != 1 ? 'none;' : 'block;'; ?>">
-                        <i class="fas fa-dollar-sign"></i> SOLICITAR
-                    </button>
+                <?php endif; ?>
+            <?php endif; ?>
+            <?php $contador == 3 ? $contador = 0 : $contador = $contador; ?>
+            <?php $contador++; ?>
+        <?php endforeach; ?>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="item-desc">
+                    <h5>Módulos</h5>
                 </div>
             </div>
+        </div>
+        <div id="tbl-mod" class="row">
+            <div class="col">
+                <?php $contador = 0; ?>
+                <?php foreach ($detalheCourse['modulos'] as $modulo) : ?>
+                    <?php $contador++; ?>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td><strong><?= $contador . ". "; ?></strong><?= $modulo['description']; ?></td>
+                            <td class="text-center" style="width: 100px;"><?= $modulo['hours'] . " h"; ?></td>
+                        </tr>
+                    </table>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="row" style="display:<?= $categoria != 1 ? 'none;' : 'flex;'; ?>">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="item-desc">
+                    <h5 class="fw-700">Preencha seus dados para receber informações de orçamento:</h5>
+                </div>
+            </div>
+        </div>
+        <div id="form-orcamento" style="display:<?= $categoria != 1 ? 'none;' : 'block;'; ?>">
+            <!-- MENSAGENS DE ALERTA -->
+            <div class="alert alert-success alert-dismissible fade show oculta" role="alert">
+                <strong>Oba!</strong> Recebemos o seu email de solicitação do curso, assim que possível retornamos o contato.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <div class="alert alert-danger alert-dismissible fade show oculta" role="alert">
+                <strong>Ops!</strong> Não conseguimos receber o seu email, tente novamente mais tarde.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+
+            <form action="">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <label for="" class="form-label">Nome completo:</label>
+                        <input type="text" class="form-control" id="nome">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                        <label for="" class="form-label">Whatsapp:</label>
+                        <input type="text" class="form-control" id="whatsapp" placeholder="(DDD) 0000-0000">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                        <label for="" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <label for="" class="form-label">Qtd.:</label>
+                        <input type="text" class="form-control" id="qtd">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="box-comprar" class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 d-grid">
+                <a href="cursos.php" type="button" class="btn btn-default">
+                    <i class="fas fa-backward"></i> VOLTAR
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 d-grid">
+                <a href="<?= $detalheCourse['curso'][0]['link']; ?>" type="button" id="btnComprar" class="btn btn-default" style="display:<?= $categoria == 2 ? 'block;' : 'none;'; ?>">
+                    <i class="fas fa-cart-plus"></i> COMPRAR
+                </a>
+                <button type="button" data-curso='<?= $detalheCourse['curso'][0]['title']; ?>' id="btnSolicitar" class="btn btn-default" style="display:<?= $categoria != 1 ? 'none;' : 'block;'; ?>">
+                    <i class="fas fa-dollar-sign"></i> SOLICITAR
+                </button>
+            </div>
+        </div>
         </div>
     </div>
 

@@ -144,7 +144,7 @@ if ($value) {
                         <div class="course-item text-center">
                             <div class="course-img" style="background-image: url(<?= $course['image']; ?>);"></div>
                             <div class="course-dsc mt-2">
-                                <a href="#" class="<?= $course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online'; ?>"><span><i class="fas fa-user"></i></span></a>
+                                <a href="#" class="<?= $course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online'; ?>"><span><i class="fas <?= $course['courses_categories_id'] == 1 ? 'fa-user' : 'fa-desktop';?>"></i></span></a>
                                 <h5 class="mt-5"><?= $course['title']; ?></h5>
                                 <h6 class="fw-400"><?= mb_substr($course['description'], 0, 200) . '...'; ?></h6>
                             </div>
@@ -158,7 +158,7 @@ if ($value) {
                         <div class="course-item text-center">
                             <div class="course-img" style="background-image: url(<?= $course['image']; ?>);"></div>
                             <div class="course-dsc mt-2">
-                                <a href="#" class="<?= $course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online'; ?>"><span><i class="fas fa-user"></i></span></a>
+                                <a href="#" class="<?= $course['courses_categories_id'] == 1 ? 'cat-presencial' : 'cat-online'; ?>"><span><i class="fas <?= $course['courses_categories_id'] == 1 ? 'fa-user' : 'fa-desktop';?>"></i></span></a>
                                 <h5 class="mt-5"><?= $course['title']; ?></h5>
                                 <h6 class="fw-400"><?= mb_substr($course['description'], 0, 200) . '...'; ?></h6>
                             </div>
@@ -177,12 +177,12 @@ if ($value) {
 
 
             <?php if (count($courses) < 1) : ?>
-                <div class="notFoundCourses" style="text-align:center;">
-                    <h1> Registros não encontrados. </h1>
+                <div class="notFoundCourses" style="text-align:center;padding:30px;">
+                    <h2> Registros não encontrados. </h2>
                 </div>
             <?php endif; ?>
 
-            <div class="course-pagination mb-5">
+            <div class="course-pagination mb-5 mt-5">
                 <?php if (count($courses) > 0) : ?>
                     <?php for ($q = 0; $q < $courses[0][0]['totalPage']; $q++) : ?>
                         <a class="<?= $courses[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="cursos.php?cat=<?=$categoria;?>&page=<?= $q ?>&value=<?=$value;?>"> <?= $q + 1; ?> </a>
@@ -204,6 +204,8 @@ if ($value) {
         </div>
     </div>
 
+
+   
     <div id="goTop" class="back-to-top">
         <a href="#"><i class="fas fa-arrow-circle-up fa-3x"></i></a>
     </div>
