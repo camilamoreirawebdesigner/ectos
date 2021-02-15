@@ -182,7 +182,7 @@ if ($value) {
                 </div>
             <?php endif; ?>
 
-            <div class="course-pagination mb-5 mt-5">
+            <div class="course-pagination mb-2 mt-2">
                 <?php if (count($courses) > 0) : ?>
                     <?php for ($q = 0; $q < $courses[0][0]['totalPage']; $q++) : ?>
                         <a class="<?= $courses[0][1]['currentPage'] == $q ? 'active' : ''; ?>" href="cursos.php?cat=<?=$categoria;?>&page=<?= $q ?>&value=<?=$value;?>"> <?= $q + 1; ?> </a>

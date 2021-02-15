@@ -221,7 +221,7 @@ $detalheCourse = getCourseDetalhe($idCurso);
                         <input type="text" class="form-control" id="whatsapp" placeholder="(DDD) 0000-0000">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
                         <label for="" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="email">
