@@ -168,6 +168,9 @@ a.nav-link:hover {
     #rodape div {
         text-align: center !important;
     }
+    #btnVoltar {
+        margin-bottom: 10px;
+    }
 }
 
 @media screen and (max-width: 768px) and (min-width: 576px) { /* grid sm*/

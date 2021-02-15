@@ -228,14 +228,14 @@ $detalheCourse = getCourseDetalhe($idCurso);
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                         <label for="" class="form-label">Qtd.:</label>
-                        <input type="text" class="form-control" id="qtd">
+                        <input type="number" class="form-control" id="qtd">
                     </div>
                 </div>
             </form>
         </div>
         <div id="box-comprar" class="row">
             <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 d-grid">
-                <a href="cursos.php" type="button" class="btn btn-default">
+                <a href="cursos.php" type="button" id="btnVoltar" class="btn btn-default">
                     <i class="fas fa-backward"></i> VOLTAR
                 </a>
             </div>
@@ -277,7 +277,14 @@ $detalheCourse = getCourseDetalhe($idCurso);
                 let whats = document.getElementById('whatsapp').value;
                 let qtd = document.getElementById('qtd').value;
                 let curso = document.getElementById('btnSolicitar').getAttribute('data-curso');
+                let emailValido = null;
 
+                //VALIDANDO E-MAIL
+                var re = /\S+@\S+\.\S+/;
+                emailValido = re.test(email);
+              
+
+                if(emailValido){
                 $.ajax({
                     type: "POST",
                     url: "./assets/email.php",
@@ -296,7 +303,12 @@ $detalheCourse = getCourseDetalhe($idCurso);
                         document.querySelector('.alert-danger').style.display = 'block';
                     },
                     dataType: "html"
-                });
+                }) 
+              } else {
+               let error =  document.querySelector('.alert-danger');
+               error.style.display = 'block';
+               error.querySelector('strong').innerText = "Ops! e-mail inválido"
+              }
             })
         } catch (e) {
 
