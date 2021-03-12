@@ -45,28 +45,9 @@ if ($value) {
 </head>
 
 <body>
-    <!-- TOP MENU -->
-    <div id="top-menu">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <span>
-                        <a href="mailto:contato@ectos.com.br">
-                            <i class="far fa-envelope"></i> contato@ectos.com.br
-                        </a>
-                    </span>
-                    <span>
-                        <a href="https://www.instagram.com/ectosoficial/" target="blank">
-                            <i class="fab fa-instagram"></i> ectosoficial
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MENU -->
-    <nav id="nabvar-default" class="navbar navbar-expand-lg navbar-dark bg-dark">
+   
+       <!-- MENU -->
+       <nav id="nabvar-default" class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <img src="assets/img/logomarca.png" alt="Ectos" height="30px">
@@ -93,6 +74,20 @@ if ($value) {
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contato">CONTATO</a>
+                    </li>
+                    <li class="nav-item">
+                    <a  href="https://www.instagram.com/ectosoficial/" class="nav-link">
+                        <i class="fab fa-instagram"></i>
+                        <span class="insta-mobile"> Instagram </span> 
+                    </a>  
+                    </li>
+                    <li class="nav-item">
+                    <span>
+                        <a href="mailto:contato@ectos.com.br" class="nav-link">
+                            <i class="far fa-envelope"></i> 
+                            <span class="insta-mobile"> E-mail </span> 
+                        </a>
+                    </span>
                     </li>
                 </ul>
             </div>
@@ -218,6 +213,22 @@ if ($value) {
 
     <!-- Link do site -->
     <script src="assets/js/botaoTopo.js"></script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/604bb78f067c2605c0b7cde4/1f0jsa2i5';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 
 </body>
 

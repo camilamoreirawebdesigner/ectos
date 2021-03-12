@@ -95,7 +95,7 @@ body {
     max-height: 100vh;
     min-height: 100vh;
     object-fit: cover;
-    object-position: center
+    object-position: center;
 }
 
 .carousel-caption {
@@ -138,6 +138,15 @@ a.nav-link:hover {
 
 #box-pilares {
     position: relative;
+    z-index: -1;
+}
+
+.insta-mobile {
+    display: none;
+}
+
+.email-mobile {
+    display: none;
 }
 
 #box-pilares span {
@@ -252,6 +261,13 @@ a.nav-link:hover {
     }
     #rodape div {
         text-align: center !important;
+    }
+
+    .insta-mobile {
+        display: inline;
+    }
+    .email-mobile {
+        display: inline;
     }
 }
 

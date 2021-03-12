@@ -104,16 +104,18 @@ $listaServices = getServices();
                         <a class="nav-link" href="#contato">CONTATO</a>
                     </li>
                     <li class="nav-item">
-                    <a  href="https://www.instagram.com/ectosoficial/" class="nav-link">
-                        <i class="fab fa-instagram"></i>
-                    </a>  
+                        <a href="https://www.instagram.com/ectosoficial/" class="nav-link">
+                            <i class="fab fa-instagram"></i>
+                            <span class="insta-mobile"> Instagram </span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                    <span>
-                        <a href="mailto:contato@ectos.com.br" class="nav-link">
-                            <i class="far fa-envelope"></i> 
-                        </a>
-                    </span>
+                        <span>
+                            <a href="mailto:contato@ectos.com.br" class="nav-link">
+                                <i class="far fa-envelope"></i>
+                                <span class="email-mobile"> E-mail </span>
+                            </a>
+                        </span>
                     </li>
                 </ul>
             </div>
@@ -272,7 +274,7 @@ $listaServices = getServices();
                         <strong>Ops!</strong> <span> Não conseguimos receber o seu email, tente novamente mais tarde.</span>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                
+
                     <!-- Formulário de contato -->
                     <form class="mt-5 mb-5" method="POST">
                         <div class="row">
@@ -370,11 +372,27 @@ $listaServices = getServices();
         <a href="#"><i class="fas fa-arrow-circle-up fa-3x"></i></a>
     </div>
 
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/604bb78f067c2605c0b7cde4/1f0jsa2i5';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
     <!-- Link do Counter Up -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="assets/libraries/counter-up/jquery.counterup.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    
+
     <!-- Link do site -->
     <script src="assets/js/contadores.js"></script>
     <script src="assets/js/botaoTopo.js"></script>

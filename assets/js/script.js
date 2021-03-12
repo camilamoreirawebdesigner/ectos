@@ -38,11 +38,12 @@ jQuery(document).ready(function( $ ) {
                     tipoEmail:1
                 },
                 success: function() {
+                    document.querySelector('.alert-danger').style.display = 'none';
                     document.querySelector('.alert-success').style.display = 'block';
                 },
                 error: function(error) {
                     document.querySelector('.alert-danger').style.display = 'block';
-                    document.querySelector('.alert-danger').querySelector('span').innerHTML = "Verifique se seu E-mail é válido";
+                    document.querySelector('.alert-danger').querySelector('span').innerHTML = "Verifique se seu E-mail é válido.";
                 },
                 dataType: "JSON"
             });
