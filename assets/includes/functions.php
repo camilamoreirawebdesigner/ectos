@@ -96,7 +96,7 @@ function getCourseDetalhe($idCurso){
   if(!empty($course[0]['banner'])){
      $course[0]['banner'] = 'data:image/jpg;base64,'.base64_encode($course[0]['banner']);
   } else {
-     $course[0]['banner'] = '../img/bg.png';
+     $course[0]['banner'] = './assets/img/bg.png';
   }
   
   //PEGANDO OS MODULOS DO CURSO
