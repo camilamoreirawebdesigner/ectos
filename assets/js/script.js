@@ -1,5 +1,19 @@
 jQuery(document).ready(function( $ ) {
-
+    
+    jQuery("#whats")
+        .mask("(99) 9999-99999")
+        .focusout(function (event) {  
+            var target, phone, element;  
+            target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+            phone = target.value.replace(/\D/g, '');
+            element = $(target);  
+            element.unmask();  
+            if(phone.length > 10) {  
+                element.mask("(99) 99999-9999");  
+            } else {  
+                element.mask("(99) 9999-99999");  
+            }  
+        });
  
 
     //FUNÇÃO PARA ENVIAR EMAIL INDEX
@@ -28,8 +42,9 @@ jQuery(document).ready(function( $ ) {
                 },
                 error: function(error) {
                     document.querySelector('.alert-danger').style.display = 'block';
+                    document.querySelector('.alert-danger').querySelector('span').innerHTML = "Verifique se seu E-mail é válido";
                 },
-                dataType: "html"
+                dataType: "JSON"
             });
         } else {
             alert("Por favor, preencha todos os campos corretamente!");

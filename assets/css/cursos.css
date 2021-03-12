@@ -197,7 +197,7 @@ a.nav-link:hover {
 
 @media screen and (max-width: 1196px) and (min-width: 992px) { /* grid md*/
     .course-dsc {
-        height: 177px !important;
+        min-height: 120px !important;
     }
 }
 

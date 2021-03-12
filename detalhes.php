@@ -80,7 +80,7 @@ $detalheCourse = getCourseDetalhe($idCurso);
                         <a class="nav-link" href="index.php">SERVIÇOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">CURSOS</a>
+                        <a class="nav-link" href="cursos.php">CURSOS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php">DOWNLOADS</a>
@@ -94,7 +94,7 @@ $detalheCourse = getCourseDetalhe($idCurso);
     </nav>
 
     <div id="detalhes-curso" class="container-fluid mb-5">
-        <div id="header-img"></div>
+        <div id="header-img" style="background-image:url(<?=$detalheCourse['curso'][0]['banner'];?>)"></div>
         <div id="name-course"><span><?= $detalheCourse['curso'][0]['title']; ?></span></div>
         <div class="container mt-3">
             <div class="row">

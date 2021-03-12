@@ -196,7 +196,7 @@ a.nav-link:hover {
 }
 
 div#header-img {
-    background-image: url(../img/bg.png);
+    background-image: url('../img/bg.png');
     min-height: 400px;
     background-position: top;
     background-repeat: repeat;
@@ -210,8 +210,8 @@ div#header-img {
     padding: 12px;
     color: #fff;
     font-size: 18px;
-    height: 50px;
-    margin-top: -50px;
+    height: 70px;
+    margin-top: -70px;
 }
 
 #detalhes-curso .item-icon {

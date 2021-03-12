@@ -33,7 +33,7 @@ $listaServices = getServices();
 
 <body>
     <!-- TOP MENU -->
-    <div id="top-menu">
+    <!--<div id="top-menu">
         <div class="container">
             <div class="row">
                 <div class="col-sm">
@@ -50,7 +50,7 @@ $listaServices = getServices();
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- CAROUSEL -->
     <div id="carousel" class="carousel slide" data-bs-ride="carousel">
@@ -103,6 +103,18 @@ $listaServices = getServices();
                     <li class="nav-item">
                         <a class="nav-link" href="#contato">CONTATO</a>
                     </li>
+                    <li class="nav-item">
+                    <a  href="https://www.instagram.com/ectosoficial/" class="nav-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>  
+                    </li>
+                    <li class="nav-item">
+                    <span>
+                        <a href="mailto:contato@ectos.com.br" class="nav-link">
+                            <i class="far fa-envelope"></i> 
+                        </a>
+                    </span>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -117,8 +129,7 @@ $listaServices = getServices();
                     <div class="col-xs-12 col-sm-6 col-md-8 col-lg-8 order-sm-2 order-md-1">
                         <h2 class="fw-500">A EMPRESA</h2>
                         <hr class="line">
-                        <h6 class="fw-400">A <strong>ectos</strong> é uma empresa de educação executiva focada no desenvolvimento de micro e pequenas empresas. <br><br>
-                            Elaboramos treinamentos específicos, acessíveis e com temas relevantes para o seu negócio, que irão tornar sua gestão mais assertiva e transformar os resultados de sua empresa.</h6>
+                        <h6 class="fw-400">A ectos é uma empresa de educação executiva focada no desenvolvimento de micro e pequenas empresas. Elaboramos treinamentos específicos, acessíveis e com temas relevantes para o seu negócio, que irão tornar sua gestão mais assertiva e transformar os resultados de sua empresa..</h6>
                     </div>
                     <div class="d-none d-sm-block col-sm-6 col-md-4 col-lg-4 order-sm-1 order-md-2">
                         <a href="https://www.youtube.com/channel/UCdgFgifcu-9LL5nt4A_cVCA" target="blank">
@@ -253,15 +264,15 @@ $listaServices = getServices();
 
                     <!-- MENSAGENS DE ALERTA -->
                     <div class="alert alert-success alert-dismissible fade show oculta" role="alert">
-                        <strong>Oba!</strong> Seu e-mail foi enviado com sucesso, entraremos em contato em breve.
+                        <strong>Oba!</strong> Sua mensagem foi enviado com sucesso, entraremos em contato em breve.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
 
                     <div class="alert alert-danger alert-dismissible fade show oculta" role="alert">
-                        <strong>Ops!</strong> Não conseguimos receber o seu email, tente novamente mais tarde.
+                        <strong>Ops!</strong> <span> Não conseguimos receber o seu email, tente novamente mais tarde.</span>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-
+                
                     <!-- Formulário de contato -->
                     <form class="mt-5 mb-5" method="POST">
                         <div class="row">
@@ -362,6 +373,7 @@ $listaServices = getServices();
     <!-- Link do Counter Up -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="assets/libraries/counter-up/jquery.counterup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     
     <!-- Link do site -->
     <script src="assets/js/contadores.js"></script>

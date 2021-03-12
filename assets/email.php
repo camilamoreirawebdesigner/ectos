@@ -10,9 +10,13 @@ switch ($tipoEmail) {
         //PEGANDO DADOS 
         $nome = filter_input(INPUT_POST, 'nome');
         $whatsaap = filter_input(INPUT_POST, 'whats');
-        $email = filter_input(INPUT_POST, 'email');
+        $email = filter_input(INPUT_POST, 'email',FILTER_VALIDATE_EMAIL);
         $assunto = filter_input(INPUT_POST, 'assunto');
         $mensagem =  filter_input(INPUT_POST, 'mensagem');
+        
+        if(!$email){
+           echo json_encode(false);
+        }
 
         $emailDestinatario = $email;
     break;
@@ -81,7 +85,7 @@ try {
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
-    echo 'Enviado com sucesso!';
+    echo json_encode(true);
 } catch (Exception $e) {
-    echo "Erro no envio";
+    echo json_encode(true);
 }

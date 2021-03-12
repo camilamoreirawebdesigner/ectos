@@ -114,9 +114,10 @@ nav.navbar {
     background-color: #000 !important;
     opacity: .8;
     border-bottom: 3px solid #01B6AD;
-    position: absolute !important;
-    top: 45px;
+    /*position: absolute !important;*/
+    top: 0px;
     width: 100%;
+    position: fixed;
 }
 a.nav-link {
     color: #FFF !important;
