@@ -63,7 +63,7 @@ $listaServices = getServices();
         <div class="carousel-inner">
             <?php foreach ($listaBanners as $banner) : ?>
                 <div class="carousel-item <?= $banner['id'] == 1 ? 'active' : ''; ?>">
-                    <img src="<?= 'data:image/jpg;base64,' . base64_encode($banner['image']); ?>" class="d-block w-100" alt="...">
+                    <img src="<?= 'data:image/jpg;base64,' . base64_encode($banner['image']); ?>" class="d-block w-100 img-fluid " alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h3><?= $banner['title']; ?></h3>
                         <p><?= $banner['description']; ?></p>
