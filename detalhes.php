@@ -270,7 +270,10 @@ $detalheCourse = getCourseDetalhe($idCurso);
     <script src="assets/js/botaoTopo.js"></script>
 
     <script>
-        try {
+        var h = '-' + document.getElementById('name-course').offsetHeight + 'px';
+        document.getElementById('name-course').style.marginTop = h;
+
+            if( document.getElementById('btnSolicitar')){
             document.getElementById('btnSolicitar').addEventListener("click", function(e) {
                 let nome = document.getElementById('nome').value;
                 let email = document.getElementById('email').value;
@@ -310,11 +313,7 @@ $detalheCourse = getCourseDetalhe($idCurso);
                error.querySelector('strong').innerText = "Ops! e-mail inválido"
               }
             })
-        } catch (e) {
-
-
-
-        }
+        } 
     </script>
 
 </body>

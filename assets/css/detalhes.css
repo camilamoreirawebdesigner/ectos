@@ -210,8 +210,7 @@ div#header-img {
     padding: 12px;
     color: #fff;
     font-size: 18px;
-    height: 70px;
-    margin-top: -70px;
+    height: auto;
 }
 
 #detalhes-curso .item-icon {
