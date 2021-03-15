@@ -160,6 +160,15 @@ a.nav-link:hover {
     color: #01756f;
 }
 
+.insta-mobile {
+    display: none;
+}
+
+.email-mobile {
+    display: none;
+}
+
+
 /* MOBILE */
 @media screen and (max-width: 576px) { /* grid xs*/
     #contato-redes {
@@ -175,6 +184,13 @@ a.nav-link:hover {
     }
     .curso {
         margin-bottom: 20px;
+    }
+
+    .insta-mobile {
+        display: inline;
+    }
+    .email-mobile {
+        display: inline;
     }
 }
 
